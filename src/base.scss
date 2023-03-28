@@ -1,3 +1,8 @@
+:root {
+  --sz-nav_height: 60px;
+  font-size: 1em;
+}
+
 *,
 *::before,
 *::after {
@@ -8,16 +13,11 @@
   color: #fff;
 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
 }
 
 body {
   background-color: #000;
-}
-
-.content_wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 50px;
 }
 
 a {
@@ -32,5 +32,27 @@ button {
   cursor: pointer;
   padding: 10px 20px;
   border-radius: calc(1rem + 5px);
-  background: linear-gradient(297.03deg, #4588c4 14.23%, #23588c 81.67%);
+  // background: linear-gradient(297.03deg, #4588c4 14.23%, #23588c 81.67%);
+  background: linear-gradient(90deg, #2b44a8 0%, #2e63c9 75%);
+}
+
+.content_wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+.no_drag {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.background_def {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
