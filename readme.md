@@ -6,7 +6,7 @@ _Note: This project is ONLY for educational purposes and does not intended for a
 
 ## TechStack
 
-- React
+- React Vite
 - TypeScript
 - SCSS
 
