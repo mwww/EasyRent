@@ -1,6 +1,5 @@
 .nav {
   height: var(--sz-nav_height);
-  // position: sticky;
   position: fixed;
   inset: 0;
   z-index: 1;
@@ -13,20 +12,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
-.logo_wrap {
-  background-image: url('/logo/logo.svg');
-  width: calc(var(--sz-nav_height) - 25px);
-  height: calc(var(--sz-nav_height) - 25px);
-}
+  > a:nth-child(1) {
+    background-image: url('/logo/logo.svg');
+    width: calc(var(--sz-nav_height) - 25px);
+    height: calc(var(--sz-nav_height) - 25px);
+  }
 
-.links {
-  margin-left: auto;
-  display: flex;
-  gap: 25px;
-  justify-content: space-between;
-  padding: 0 25px;
+  ul {
+    margin-left: auto;
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+    padding: 0 25px;
+  }
 }
 
 .navNoBG {
