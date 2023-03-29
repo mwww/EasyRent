@@ -10,25 +10,37 @@ export default function NavBar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const navLinks = [
+    {
+      url: '',
+      text: 'Home',
+    },
+    {
+      url: '',
+      text: 'Catalogue',
+    },
+    {
+      url: '',
+      text: 'About Us',
+    },
+    {
+      url: '',
+      text: 'Contact',
+    },
+  ]
   return (
-    <nav className={`${css.nav} ${navbarClass}`}>
+    <nav className={`${css.nav} ${navbarClass} no_drag`}>
       <div className={`content_wrapper ${css.nav_wrap}`}>
-        <Link to="/" className={`background_def ${css.logo_wrap}`}></Link>
-        <ul className={css.links}>
-          <li>
-            <Link to="">Home</Link>
-          </li>
-          <li>
-            <Link to="">Catalogue</Link>
-          </li>
-          <li>
-            <Link to="">About Us</Link>
-          </li>
-          <li>
-            <Link to="">Contact</Link>
-          </li>
+        <Link to="/" className="background_def"></Link>
+        <ul>
+          {navLinks.map((link) => (
+            <li>
+              <Link to={link.url}>{link.text}</Link>
+            </li>
+          ))}
         </ul>
-        <Link to="" className={css.cta}>
+        <Link to="">
           <button>Rent a Car Now!</button>
         </Link>
       </div>
