@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom'
 import css from './navbar.module.scss'
-// import Logo from '../../assets/logo.svg'
+import { useEffect, useState } from 'react'
 
 export default function NavBar() {
+  const [navbarClass, setNavbarClass] = useState(css.navNoBG)
+  const handleScroll = () =>
+    setNavbarClass(window.scrollY >= 45 ? css.navBG : css.navNoBG)
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   return (
-    <nav className={css.nav}>
+    <nav className={`${css.nav} ${navbarClass}`}>
       <div className={`content_wrapper ${css.nav_wrap}`}>
-        {/* <p>This is navbar</p> */}
         <Link to="/" className={`background_def ${css.logo_wrap}`}></Link>
         <ul className={css.links}>
           <li>
