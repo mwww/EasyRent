@@ -15,7 +15,25 @@
 
   h3 {
     font-size: 2.5rem;
+    padding: 1rem 0;
     // font-family: 'Raleway';
     font-weight: bold;
+
+    span {
+      // display: inline-flex;
+      // align-self: center;
+      // height: 100%;
+      // height: 3rem;
+      // margin: auto;
+      // vertical-align: middle;
+      font-size: 2.5rem;
+      // color: rgb(192, 192, 192);
+
+      background: linear-gradient(45deg, #4aa5ff, #4affff, #6e6efc, #ffa54a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
 }
