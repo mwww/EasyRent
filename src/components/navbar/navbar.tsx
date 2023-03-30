@@ -7,6 +7,7 @@ export default function NavBar() {
   const handleScroll = () =>
     setNavbarClass(window.scrollY >= 45 ? css.navBG : css.navNoBG)
   useEffect(() => {
+    setNavbarClass(window.scrollY >= 45 ? css.navBG : css.navNoBG)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
