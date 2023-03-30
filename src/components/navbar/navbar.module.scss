@@ -39,14 +39,14 @@
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .nav {
     background-color: rgb(17 17 17/0);
-    transition: background-color 0.25s ease-out, backdrop-filter 0.25s ease-out;
+    transition: background-color 0.25s ease-out, backdrop-filter 0.1s ease-out;
     -webkit-backdrop-filter: blur(0) brightness(1);
     backdrop-filter: blur(0) brightness(1);
   }
 
   .navBG {
     background-color: rgb(17 17 17/0.75);
-    -webkit-backdrop-filter: blur(12px) brightness(0.75);
-    backdrop-filter: blur(12px) brightness(0.75);
+    -webkit-backdrop-filter: blur(5rem) brightness(0.75);
+    backdrop-filter: blur(5rem) brightness(0.75) saturate(5);
   }
 }
