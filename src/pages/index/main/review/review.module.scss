@@ -12,12 +12,17 @@
   background-size: contain !important;
   background-position: right !important;
 
-  margin: 50px 0;
+  // margin: 50px 0;
   //   height: ;
+  // padding: 25px 0;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  > div {
+    padding: 25px 0;
+  }
 
   > div:nth-child(1) {
     // background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0));
