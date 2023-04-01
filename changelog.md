@@ -33,4 +33,4 @@
 
 ### ToDo(s)
 
-- make review card cycles every X second(s) with a nice and smooth transition.
+- [ ] make review card cycles every X second(s) with a nice and smooth transition.
