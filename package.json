@@ -8,6 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
+  "author": "mwww",
+  "license": "GPL-3.0-or-later",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
