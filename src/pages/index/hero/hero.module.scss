@@ -3,8 +3,6 @@ $hero_height: max(50vh, 600px);
 
 .hero {
   height: $hero_height;
-  // position: absolute;
-  // inset: 0;
   z-index: -1;
 }
 
@@ -18,6 +16,17 @@ $hero_height: max(50vh, 600px);
   > div {
     flex: 1;
   }
+  @media only screen and (max-width: 1199px) {
+    gap: 0;
+    > div {
+      &:first-child {
+        flex: none;
+      }
+      &:last-child {
+        max-width: 415px;
+      }
+    }
+  }
 }
 
 .bg {
@@ -29,6 +38,15 @@ $hero_height: max(50vh, 600px);
   width: 100%;
   height: $hero_height;
   z-index: -1;
+  @media only screen and (max-width: 1199px) {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgb(0, 0, 0) 100%
+      ),
+      url('/imgs/bg.png');
+  }
 }
 
 .tagline {
@@ -40,5 +58,13 @@ $hero_height: max(50vh, 600px);
     font-family: 'Caveat';
     font-size: inherit;
     font-weight: 700;
+
+    padding-right: 0.5ch;
+
+    background: linear-gradient(45deg, #4aa5ff, #4affff, #6e6efc, #ffa54a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    color: rgba(255, 255, 255, 0.5);
   }
 }
