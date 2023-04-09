@@ -1,0 +1,46 @@
+.actionCard {
+  background: linear-gradient(
+    45deg,
+    hsl(210, 100%, 15%),
+    hsl(180, 100%, 15%),
+    hsl(240, 96%, 21%),
+    hsl(30, 100%, 15%)
+  );
+  position: relative;
+  border-radius: 10px;
+
+  width: 100%;
+  padding: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.blurGrad {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    -webkit-backdrop-filter: blur(5rem) saturate(0.75);
+    backdrop-filter: blur(1rem) saturate(0.75);
+  }
+  border-radius: 10px;
+}
+
+.texts,
+.texts > a {
+  z-index: 2;
+  font-size: 2rem;
+  font-weight: 700;
+
+  a {
+    text-transform: uppercase;
+
+    background: linear-gradient(45deg, #4aa5ff, #4affff, #6e6efc, #ffa54a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: rgba(255, 255, 255, 0.5);
+
+    text-decoration: underline;
+  }
+}
