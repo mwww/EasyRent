@@ -1,17 +1,31 @@
 .cards {
-  display: flex;
-  gap: 25px;
+  // display: flex;
+  display: grid;
+  grid-gap: 25px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+
+  > div:nth-child(3) {
+    display: none;
+  }
 
   @media only screen and (max-width: 1199px) {
-    > div:nth-child(3) {
-      display: none;
-    }
-  }
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     > div:nth-child(3) {
       display: block;
     }
+  }
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    > div:nth-child(3) {
+      display: none;
+    }
+    // flex-direction: column;
+    // > div:nth-child(3) {
+    //   display: block;
+    // }
   }
 }
 
