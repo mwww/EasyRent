@@ -67,6 +67,12 @@ export default function Superiority() {
         'Over one hundred cars treated with the utmost care. Trust us to keep your vehicle running smoothly.',
     },
     {
+      illustration: ['5', 'Years+'],
+      // tagline: 'More than five years of professional experience.',
+      tagline:
+        'More than five years of professional experience and make our costumer happy.',
+    },
+    {
       illustration: ['24/7', 'Support'],
       tagline:
         'Always available for your convenience. Count on us for prompt and reliable service.',
