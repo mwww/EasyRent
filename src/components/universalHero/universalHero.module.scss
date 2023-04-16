@@ -1,0 +1,25 @@
+.header {
+  margin: 2.5rem auto !important;
+  margin-top: calc(65px + 25px) !important;
+}
+
+.header_content {
+  padding: 5rem 50px;
+  background-color: hsl(0, 0%, 10%);
+
+  border: 1px solid hsla(0, 0%, 50%, 0.15);
+  border-radius: 10px;
+
+  h1 {
+    font-size: 2.5rem;
+    font-family: 'raleway';
+
+    width: fit-content;
+    margin: auto;
+
+    background: linear-gradient(45deg, #4aa5ff, #4affff, #6e6efc, #ffa54a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
