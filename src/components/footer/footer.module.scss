@@ -1,7 +1,17 @@
 .footer {
   background-color: hsl(0, 0%, 7.5%);
-  padding: 50px 0;
+  margin-top: 50px;
+  padding-top: 50px;
   border-top: 1px solid hsla(0, 0%, 50%, 0.15);
+
+  opacity: 0;
+
+  &.isReal {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    opacity: 1;
+  }
 
   // > div {
   //   display: flex;
@@ -64,9 +74,43 @@
 
 .socialIcons {
   display: flex;
-  gap: 10px;
+  gap: 5px;
+  margin-top: 5px;
 
   > li > a > img {
     width: 1.5rem;
+  }
+}
+
+// Legal Stuff
+
+.legalStuff {
+  background-color: hsla(0, 0%, 10%, 1);
+  margin-top: 50px;
+  padding: 25px 0;
+  border-top: 1px solid hsla(0, 0%, 50%, 0.15);
+
+  p,
+  a {
+    font-size: 0.9rem;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  @media only screen and (max-width: 575px) {
+    flex-direction: column;
+    // gap: 10px;
+  }
+}
+
+.legalLinks {
+  display: flex;
+  gap: 25px;
+  text-decoration: underline;
+  @media only screen and (max-width: 575px) {
+    // justify-content: right;
+    gap: 1ch;
   }
 }
