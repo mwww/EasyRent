@@ -59,6 +59,11 @@ $hero_height: max(50vh, 600px);
     font-size: inherit;
     font-weight: 700;
 
+    // width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     padding-right: 0.5ch;
 
     background: linear-gradient(45deg, #4aa5ff, #4affff, #6e6efc, #ffa54a);
