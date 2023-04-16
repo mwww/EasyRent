@@ -14,11 +14,11 @@ export default function NavBar() {
 
   const navLinks = [
     {
-      url: '',
+      url: '/',
       text: 'Home',
     },
     {
-      url: '',
+      url: '/catalogue',
       text: 'Catalogue',
     },
     {
