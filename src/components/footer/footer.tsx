@@ -1,5 +1,8 @@
 import css from './footer.module.scss'
 
+import lg_fb from './icons/fb.svg'
+import lg_ig from './icons/ig.svg'
+
 export default function Footer() {
   const footerLinks = [
     {
@@ -67,65 +70,76 @@ export default function Footer() {
     },
   ]
   return (
-    <footer className={css.footer}>
-      <div className={`content_wrapper`}>
-        {/* <h1>footer!</h1> */}
-        {/* <a href="" className={`background_def ${css.logo}`}></a> */}
-        <div className={css.footerContent}>
-          <div>
-            <div className={css.logoContainer}>
-              <a href="" className={`background_def ${css.logo}`}></a>
-            </div>
-          </div>
+    <>
+      {Array.from({ length: 2 }).map((_, index) => (
+        <footer className={`${css.footer} ${index && css.isReal}`}>
+          <div className={`content_wrapper`}>
+            {/* <h1>footer!</h1> */}
+            {/* <a href="" className={`background_def ${css.logo}`}></a> */}
+            <div className={css.footerContent}>
+              <div>
+                <div className={css.logoContainer}>
+                  <a href="" className={`background_def ${css.logo}`}></a>
+                </div>
+              </div>
 
-          {footerLinks.map((cat) => (
-            <div>
-              <h3>{cat.Title}</h3>
-              <ul>
-                {cat.Links.map((link) => (
+              {footerLinks.map((cat) => (
+                <div>
+                  <h3>{cat.Title}</h3>
+                  <ul>
+                    {cat.Links.map((link) => (
+                      <li>
+                        <a href={link.Link}>{link.Text}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              <div>
+                <h3>Find us at</h3>
+                <ul>
                   <li>
-                    <a href={link.Link}>{link.Text}</a>
+                    <a href="">LinkedIn</a>
                   </li>
-                ))}
-              </ul>
+                  <li>
+                    <a href="">GitHub</a>
+                  </li>
+                </ul>
+                {/* <div> */}
+                {/* icons */}
+                <ul className={css.socialIcons}>
+                  <li>
+                    <a href="">
+                      <img className="no_drag" src={lg_fb} alt="fb" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <img className="no_drag" src={lg_ig} alt="ig" />
+                    </a>
+                  </li>
+                </ul>
+                {/* </div> */}
+              </div>
             </div>
-          ))}
-          <div>
-            <h3>Find us at</h3>
-            <ul>
-              <li>
-                <a href="">LinkedIn</a>
-              </li>
-              <li>
-                <a href="">GitHub</a>
-              </li>
-            </ul>
-            {/* <div> */}
-            {/* icons */}
-            <ul className={css.socialIcons}>
-              <li>
-                <a href="">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
-                    alt="fb"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <img src="" alt="ig" />
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <img src="" alt="wa" />
-                </a>
-              </li>
-            </ul>
-            {/* </div> */}
           </div>
-        </div>
-      </div>
-    </footer>
+          <div className={css.legalStuff}>
+            <div className={`content_wrapper ${css.container}`}>
+              <p>© Copyright 2023 - EasyRent</p>
+              <p>
+                <ul className={css.legalLinks}>
+                  <li>
+                    <a href="">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="">Terms and Conditions</a>
+                  </li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </footer>
+      ))}
+    </>
   )
 }
