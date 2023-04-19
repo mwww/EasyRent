@@ -27,7 +27,10 @@
       border-radius: 10px 10px 0 0;
     }
     &:last-child {
-      > div {
+      height: 100%;
+      flex: 1;
+      > div:first-child,
+      > div > div:first-child {
         margin: 0;
         margin-bottom: 25px;
       }
@@ -43,9 +46,13 @@
 
 .description {
   width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
     -webkit-backdrop-filter: blur(5rem) brightness(0.75);
-    backdrop-filter: blur(5rem) brightness(0.25);
+    // backdrop-filter: blur(5rem) brightness(0.25);
+    backdrop-filter: blur(3.5rem) saturate(2) brightness(0.25);
   }
   > div:nth-child(1) {
     > h3 {
@@ -62,17 +69,11 @@
   justify-content: space-between;
   align-items: center;
 
-  > div {
-    display: flex;
-    gap: 0.25rem;
-    > a > button {
+  > a {
+    width: 100%;
+    > button {
       font-weight: 700;
-    }
-    > a:nth-child(1) > button {
-      border-radius: calc(1rem + 5px) 0 0 calc(1rem + 5px);
-    }
-    > a:nth-child(2) > button {
-      border-radius: 0 calc(1rem + 5px) calc(1rem + 5px) 0;
+      width: 100%;
     }
   }
 }

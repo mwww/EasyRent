@@ -15,19 +15,19 @@ export default function NavBar() {
   const navLinks = [
     {
       url: '/',
-      text: 'Home',
+      Text: 'Home',
     },
     {
       url: '/catalogue',
-      text: 'Catalogue',
+      Text: 'Catalogue',
     },
     {
-      url: '',
-      text: 'About Us',
+      url: '/aboutus',
+      Text: 'About Us',
     },
     {
-      url: '',
-      text: 'Contact',
+      url: '/contact',
+      Text: 'Contact',
     },
   ]
   return (
@@ -37,7 +37,7 @@ export default function NavBar() {
         <ul>
           {navLinks.map((link) => (
             <li>
-              <Link to={link.url}>{link.text}</Link>
+              <Link to={link.url}>{link.Text}</Link>
             </li>
           ))}
         </ul>

@@ -1,17 +1,19 @@
-// Components
+import { useEffect } from 'react'
+
+// External Components
 import HoverEffect from '../../components/hoverEffect/hoverEffect'
 import NavBar from '../../components/navbar/navbar'
 import Footer from '../../components/footer/footer'
 import LegalStuff from '../../components/legalStuff/legalStuff'
 
-// Pages
+// internal Components
 import Hero from './hero/hero'
 import Main from './main/main'
 
-// Style
-import style from './index.module.scss'
-
 export default function Index() {
+  useEffect(() => {
+    document.title = 'EasyRent'
+  }, [])
   return (
     <>
       {/* <HoverEffect /> */}
@@ -19,7 +21,7 @@ export default function Index() {
       <Hero />
       <Main />
       <Footer />
-      <LegalStuff />
+      {/* <LegalStuff /> */}
     </>
   )
 }

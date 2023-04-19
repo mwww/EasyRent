@@ -1,8 +1,11 @@
 import css from './featured.module.scss'
 
+import lArrwShrt from './lArrwShrt.svg'
+import rArrw from './rArrw.svg'
+
 export default function Featured() {
   return (
-    <section className={css.featured}>
+    <section className={`background_def ${css.featured}`}>
       {/* <div>image here</div> */}
       <div className="background_def"></div>
       <div className={css.description}>
@@ -21,10 +24,14 @@ export default function Featured() {
           </a>
           <div>
             <a href="">
-              <button>&lArr;</button>
+              {/* <button>&lArr;</button> */}
+              <img src={lArrwShrt} alt="" />
+              {/* <button></button> */}
             </a>
             <a href="">
-              <button>&rArr;</button>
+              {/* <button>&rArr;</button> */}
+              <img src={rArrw} alt="" />
+              {/* <button></button> */}
             </a>
           </div>
         </div>
@@ -32,3 +39,9 @@ export default function Featured() {
     </section>
   )
 }
+
+type CardProps = {
+  data: object
+}
+
+function carCard(props: CardProps) {}

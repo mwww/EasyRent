@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import css from './footer.module.scss'
 
 import lg_fb from './icons/fb.svg'
@@ -10,19 +11,19 @@ export default function Footer() {
       Links: [
         {
           Text: 'Home',
-          Link: '/',
+          url: '/',
         },
         {
           Text: 'Catalogue',
-          Link: '/catalogue',
+          url: '/catalogue',
         },
         {
           Text: 'About Us',
-          Link: '/aboutus',
+          url: '/aboutus',
         },
         {
           Text: 'Contact',
-          Link: '/contact',
+          url: '/contact',
         },
       ],
     },
@@ -31,19 +32,19 @@ export default function Footer() {
       Links: [
         {
           Text: 'FAQ',
-          Link: '/',
+          url: '/dummy-page',
         },
         {
           Text: 'Policy',
-          Link: '/',
+          url: '/dummy-page',
         },
         {
           Text: 'Support',
-          Link: '/',
+          url: '/dummy-page',
         },
         {
           Text: 'Feedback',
-          Link: '/',
+          url: '/dummy-page',
         },
       ],
     },
@@ -52,19 +53,19 @@ export default function Footer() {
       Links: [
         {
           Text: 'Our Story',
-          Link: '/',
+          url: '/dummy-page',
         },
         {
           Text: 'Members',
-          Link: '/',
+          url: '/dummy-page',
         },
         {
           Text: 'Careers',
-          Link: '/',
+          url: '/dummy-page',
         },
         {
           Text: 'Collaboration',
-          Link: '/',
+          url: '/dummy-page',
         },
       ],
     },
@@ -83,13 +84,15 @@ export default function Footer() {
                 </div>
               </div>
 
+              {/* why do I call it "cat"? IDK I don't even remember writing this. probably my subconscious self. */}
               {footerLinks.map((cat) => (
                 <div>
                   <h3>{cat.Title}</h3>
                   <ul>
                     {cat.Links.map((link) => (
                       <li>
-                        <a href={link.Link}>{link.Text}</a>
+                        {/* <a href={link.Link}>{link.Text}</a> */}
+                        <Link to={link.url}>{link.Text}</Link>
                       </li>
                     ))}
                   </ul>

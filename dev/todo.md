@@ -1,6 +1,6 @@
 # EasyRent TODOs
 
-- [ ] Redesign Home Page
+- [x] Redesign Home Page
 - [ ] Redesign About Us Page
 - [ ] Redesign Catalogue Page
 - [ ] Redesign Contact Page

@@ -1,8 +1,6 @@
 .featured {
   width: 100%;
-  //   background-color: var(--clr-main-bg);
   background-image: url('/imgs/cars/1.jpg');
-  //   border: 1px solid var(--clr-grey);
   border-radius: 12px;
 
   padding: 0 !important;
@@ -45,9 +43,10 @@
       }
       &:last-child {
         > div {
-          margin: 25px 15px;
+          margin: 0;
+          margin-bottom: 25px;
         }
-        padding: 15px;
+        padding: 25px;
 
         border-left: 1px solid var(--clr-grey);
         border-right: 1px solid var(--clr-grey);
@@ -62,7 +61,7 @@
   width: max-content;
   @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
     -webkit-backdrop-filter: blur(5rem) brightness(0.75);
-    backdrop-filter: blur(1rem) brightness(0.25);
+    backdrop-filter: blur(5rem) brightness(0.25);
   }
   // border-right: 1px solid var(--clr-grey);
   // border-top: 1px solid var(--clr-grey);
@@ -89,9 +88,23 @@
 
   > div {
     display: flex;
-    gap: 0.25rem;
-    > a > button {
-      font-weight: 700;
+    gap: 2rem;
+    > a {
+      // height: 0.95rem;
+      // }
+
+      // > a > button {
+      // font-weight: 700;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      // padding: 14px 28px !important;
+      & > img {
+        // height: 1rem;
+        // height: 100%;
+        height: 0.95rem;
+        filter: brightness(0.75);
+      }
     }
     > a:nth-child(1) > button {
       border-radius: calc(1rem + 5px) 0 0 calc(1rem + 5px);
