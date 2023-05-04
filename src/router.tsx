@@ -6,6 +6,8 @@ import DummyPage from './pages/dummyPage/dummyPage'
 import Catalogue from './pages/catalogue/catalogue'
 import AboutUs from './pages/aboutUs/aboutUs'
 
+import Checkout from './pages/checkout/checkout'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,6 +26,11 @@ const router = createBrowserRouter([
   {
     path: '/AboutUs',
     element: <AboutUs />,
+  },
+
+  {
+    path: '/checkout',
+    element: <Checkout />,
   },
 ])
 
