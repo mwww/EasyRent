@@ -40,6 +40,14 @@ ul {
   list-style-type: none;
 }
 
+select {
+  padding: 10px 20px;
+  border-radius: calc(1rem + 5px);
+  border: 2px solid var(--clr-grey);
+
+  background-color: var(--clr-main-bg);
+}
+
 button {
   cursor: pointer;
   padding: 10px 20px;
