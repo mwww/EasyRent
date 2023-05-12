@@ -1,66 +1,63 @@
 .bg {
-    background-image: url('http://127.0.0.1:5173/imgs/bg.png');
+  background-image: url('/imgs/bg.png');
 }
 
 .container {
-    display: flex;
-    width: 100%;
-    // padding: 200px;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  width: 100%;
+  // padding: 200px;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .form {
-    width: fit-content;
-    height: fit-content;
-    form {
-        input {
-            width: 100%;
-
-        }
-
+  width: fit-content;
+  height: fit-content;
+  form {
+    input {
+      width: 100%;
     }
-    h1 {
-        font-size: 1.4rem;
-    }
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
 
-    >p {
-        margin-bottom: 10px;
-    }
+  > p {
+    margin-bottom: 10px;
+  }
 
-    @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-        background-color: rgb(17 17 17/0.25);
-        -webkit-backdrop-filter: blur(5rem) brightness(0.75) saturate(5);
-        backdrop-filter: blur(5rem) brightness(0.75) saturate(5);
-    }
-      padding: 50px 35px;
-      border-radius: 20px;
+  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    background-color: rgb(17 17 17/0.25);
+    -webkit-backdrop-filter: blur(5rem) brightness(0.75) saturate(5);
+    backdrop-filter: blur(5rem) brightness(0.75) saturate(5);
+  }
+  padding: 50px 35px;
+  border-radius: 20px;
 }
 
 .register {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 7px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7px;
 }
 
 .text {
-    background: linear-gradient(45deg, #4aa5ff, #4affff, #6e6efc, #ffa54a);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(45deg, #4aa5ff, #4affff, #6e6efc, #ffa54a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(255, 255, 255, 0.5);
 
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .btn {
-    padding: 15px 0px;
-    display: flex;
-    justify-content: left;
+  padding: 15px 0px;
+  display: flex;
+  justify-content: left;
 
-    >button {
-        border-radius: 15px;
-        padding: 9px 20px;
-    }
-    
+  > button {
+    border-radius: 15px;
+    padding: 9px 20px;
+  }
 }
