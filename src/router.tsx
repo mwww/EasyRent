@@ -5,8 +5,8 @@ import Index from './pages/index/index'
 import DummyPage from './pages/dummyPage/dummyPage'
 import Catalogue from './pages/catalogue/catalogue'
 import AboutUs from './pages/aboutUs/aboutUs'
-
 import Checkout from './pages/checkout/checkout'
+import Login from './pages/app/login/login';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: '/checkout',
     element: <Checkout />,
+  },
+  {
+    path: '/login',
+    element: <Login />
   },
 ])
 

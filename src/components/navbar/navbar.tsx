@@ -41,7 +41,7 @@ export default function NavBar() {
             </li>
           ))}
         </ul>
-        <Link to="" draggable="false">
+        <Link to="/login" draggable="false">
           <button>Rent a Car Now!</button>
         </Link>
       </div>

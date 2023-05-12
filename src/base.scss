@@ -69,6 +69,15 @@ button {
   color: transparent;
 }
 
+input {
+  background-color: var(--clr-main-bg);
+  border:  3px solid var(--clr-grey);
+  border-radius: 10px;
+  margin: 10px 0;
+  // height: 40px;
+  padding: 5px;
+}
+
 .content_wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -93,3 +102,5 @@ button {
   background-position: center;
   background-size: cover;
 }
+
+
