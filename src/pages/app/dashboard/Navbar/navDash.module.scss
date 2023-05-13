@@ -1,0 +1,66 @@
+.nav {
+    height: var(--sz-nav_height);
+    position: fixed;
+    inset: 0;
+    z-index: 69;
+  }
+  
+  .nav_wrap {
+    height: 100%;
+    width: 100%;
+    // margin: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+  
+    // > a:nth-child(1) {
+    //   background-image: url('/logo/logo.svg');
+    //   width: calc(var(--sz-nav_height) - 25px);
+    //   height: calc(var(--sz-nav_height) - 25px);
+    // }
+  
+    // ul {
+    //   margin-left: auto;
+    //   display: flex;
+    //   gap: 25px;
+    //   justify-content: space-between;
+    //   padding: 0 25px;
+    // }
+  
+    @media only screen and (max-width: 768px) {
+      ul {
+        display: none;
+      }
+    }
+  }
+
+  .profile{
+    border: 1px solid #eeee;
+    padding: 5px;
+    border-radius: 50%;
+  }
+  
+  .navNoBG {
+    background-color: transparent;
+  }
+  
+  .navBG {
+    background-color: rgb(17, 17, 17);
+  }
+  
+  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    .nav {
+      background-color: rgb(17 17 17/0);
+      transition: background-color 0.25s ease-out, backdrop-filter 0.1s ease-out;
+      -webkit-backdrop-filter: blur(0) brightness(1);
+      backdrop-filter: blur(0) brightness(1);
+    }
+  
+    .navBG {
+      background-color: rgb(17 17 17/0.75);
+      -webkit-backdrop-filter: blur(5rem) brightness(0.75) saturate(5);
+      backdrop-filter: blur(5rem) brightness(0.75) saturate(5);
+    }
+  }
