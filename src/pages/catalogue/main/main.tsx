@@ -26,14 +26,14 @@ interface CarsData {
 
 export default function Main() {
   const [carsData, setCarsData] = useState<CarsData[]>([]) // initialize the state with an empty array
-  const [order, setOrder] = useState<string>('+')
+  const [order, setOrder] = useState<string>('asc')
   const [sortBy, setSortBy] = useState<string>('id')
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/cars/sortby/${order}${sortBy}`
+          `http://localhost:3000/api/cars?sortby=${sortBy}&order=${order}`
         )
         const data = await response.json()
         // console.log(data)
