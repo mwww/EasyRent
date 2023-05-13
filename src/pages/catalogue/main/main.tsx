@@ -46,12 +46,12 @@ export default function Main() {
     fetchData()
   }, [sortBy, order]) // run whenever sortBy and order changes
 
-  const handleOrderChange = (e) => {
-    setOrder(e.target.value)
+  const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setOrder(event.target.value)
   }
 
-  const handleSortChange = (e) => {
-    const selectedSortBy = e.target.value
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedSortBy = event.target.value
     console.log(selectedSortBy)
     setSortBy(selectedSortBy)
   }
