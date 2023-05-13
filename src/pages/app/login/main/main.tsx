@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import css from './main.module.scss'
 
 const main = () => {
+
+
+
   useEffect(() => {
     document.title = 'Login - EasyRent'
   }, [])

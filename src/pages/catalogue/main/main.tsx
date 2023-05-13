@@ -62,12 +62,12 @@ export default function Main() {
 
     <main className={`content_wrapper`}>
       <label htmlFor="order">Order: </label>
-      <select id="order" onChange={handleOrderChange} defaultValue="+">
-        <option value="+">&darr;</option>
-        <option value="-">&uarr;</option>
+      <select id="order" onChange={handleOrderChange} defaultValue={order}>
+        <option value="asc">&darr;</option>
+        <option value="desc">&uarr;</option>
       </select>
       <label htmlFor="sort-by">Sort By: </label>
-      <select id="sort-by" onChange={handleSortChange} defaultValue="id">
+      <select id="sort-by" onChange={handleSortChange} defaultValue={sortBy}>
         <option value="id">ID</option>
         <option value="release-year">Release Year</option>
         <option value="horse-power">Horse Power</option>
