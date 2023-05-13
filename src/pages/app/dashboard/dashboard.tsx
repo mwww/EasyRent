@@ -1,26 +1,15 @@
 import React from 'react'
 import {FcMenu} from 'react-icons/fc'
-function dashboard() {
-    
+import Navbar from './Navbar/Navbar';
+import Main from './main/main';
+function Dashboard() {
 
   return (
     <div>
-        <header >
-
-            <a href="/#" >
-                Rizki<span >Gunawan</span></a> 
-                <button>
-                    <FcMenu className='text-5xl text-white block lg:hidden' 
-                     />
-                </button>
-                        <nav >
-                       
-                        </nav>
-                
-
-        </header>   
+        <Navbar/>
+        <Main />
     </div>
   )
 }
 
-export default dashboard
+export default Dashboard

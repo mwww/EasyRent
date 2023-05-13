@@ -1,0 +1,73 @@
+
+  .container {
+    // padding: 200px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 40px;
+
+
+
+    @media only screen and (max-width: 768px) {
+      h1 {
+        font-size: 20px;
+        padding-top: 75px;
+        padding-left: 50px;
+      }
+  }
+
+   
+    
+  }
+
+
+  
+  @media only screen and (max-width: 768px) {
+    .slider{
+        margin-left: -220px;
+    }
+}
+
+
+
+.table{
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  background-color: gray;
+
+  thead tr {
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    background-color: black;
+
+    th {
+      padding: 12px 15px;
+    }
+  }
+
+  tbody{
+    border-bottom: 1px solid #eee;
+    
+
+    td{
+      padding: 12px 15px;
+    }
+  }
+
+
+}
+
+@media only screen and (max-width: 768px) {
+  .table{
+      width: 30px;
+  }
+}
+
+
+
+
+
