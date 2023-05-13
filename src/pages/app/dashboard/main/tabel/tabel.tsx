@@ -1,39 +1,131 @@
 import React from 'react'
 import css from './tabel.module.scss'
 function Tabel() {
-  return (
-    <div className={css.boxtable}>
-                  <table className={css.table}>
-                    <thead>
-                      <tr>
-                        <th>Nomor </th>
-                        <th>Nama Mahasiswa</th>
-                        <th>Nama Mahasiswa</th>
-                        <th>Nama Mahasiswa</th>
-                        <th>Nama Mahasiswa</th>
-                        <th>Nama Mahasiswa</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Ayu Daini</td>
-                        <td>Sistem Informasi</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Islahudin</td>
-                        <td>Teknik Informatika</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Gufron Hasan</td>
-                        <td>Teknik Informatika</td>
-                      </tr>
 
-                  </tbody>
-                  </table>
-                  </div>
+    
+  return (
+    <div className={css.table_content}>
+        <table className={css.tableI}>
+        <thead >
+            <tr>
+                <th>id_user</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>role</th>
+                <th>firstname</th>
+                <th>lastName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ayu Daini</td>
+                <td>0813122367</td>
+                <td>user</td>
+                <td>Jamal </td>
+                <td>suleman </td>
+            </tr>
+       
+           
+        </tbody>
+        </table>
+        </div>
   )
 }
 

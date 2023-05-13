@@ -4,7 +4,7 @@
     height: 100vh;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 50px;
     margin: 40px;
 
 
@@ -31,35 +31,35 @@
 
 
 
-.table{
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  min-width: 400px;
-  background-color: gray;
+// .table{
+//   border-collapse: collapse;
+//   margin: 25px 0;
+//   font-size: 0.9em;
+//   min-width: 400px;
+//   background-color: gray;
 
-  thead tr {
-    color: #fff;
-    text-align: left;
-    font-weight: bold;
-    background-color: black;
+//   thead tr {
+//     color: #fff;
+//     text-align: left;
+//     font-weight: bold;
+//     background-color: black;
 
-    th {
-      padding: 12px 15px;
-    }
-  }
+//     th {
+//       padding: 12px 15px;
+//     }
+//   }
 
-  tbody{
-    border-bottom: 1px solid #eee;
+//   tbody{
+//     border-bottom: 1px solid #eee;
     
 
-    td{
-      padding: 12px 15px;
-    }
-  }
+//     td{
+//       padding: 12px 15px;
+//     }
+//   }
 
 
-}
+// }
 
 @media only screen and (max-width: 768px) {
   .table{

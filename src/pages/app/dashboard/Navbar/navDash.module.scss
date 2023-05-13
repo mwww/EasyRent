@@ -15,11 +15,11 @@
 
 
   
-    // > a:nth-child(1) {
-    //   background-image: url('/logo/logo.svg');
-    //   width: calc(var(--sz-nav_height) - 25px);
-    //   height: calc(var(--sz-nav_height) - 25px);
-    // }
+    > a:nth-child(1) {
+      background-image: url('/logo/logo.svg');
+      width: calc(var(--sz-nav_height) - 25px);
+      height: calc(var(--sz-nav_height) - 25px);
+    }
   
     // ul {
     //   margin-left: auto;
@@ -38,8 +38,10 @@
 
   .profile{
     border: 1px solid #eeee;
-    padding: 5px;
+    padding: 10px;
     border-radius: 50%;
+    width: 50px;
+    text-align: center;
   }
   
   .navNoBG {
