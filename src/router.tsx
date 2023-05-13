@@ -7,6 +7,7 @@ import Catalogue from './pages/catalogue/catalogue'
 import AboutUs from './pages/aboutUs/aboutUs'
 import Checkout from './pages/checkout/checkout'
 import Login from './pages/app/login/login';
+import Dashboard from './pages/app/dashboard/dashboard'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />
+  },
+  {
+    path: '/admin',
+    element: <Dashboard />
   },
 ])
 
