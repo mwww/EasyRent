@@ -13,8 +13,7 @@ function Main() {
         <main className={`${css.bg} background_def`}>
             <div className={css.container}>
                <SideBar/>
-                
-                <Tabel/> 
+               <Tabel/> 
             </div>
         </main>
     </div>

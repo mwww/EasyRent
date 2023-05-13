@@ -1,7 +1,7 @@
 import css from './navDash.module.scss'
 import React,{useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import {BsFillGridFill, BsFillPersonFill} from 'react-icons/bs'
+import {BsFillPersonFill} from 'react-icons/bs'
 import Sidebar from '../SideBar/sidebar'
 
 function Navbar() {
@@ -20,9 +20,9 @@ function Navbar() {
     <div>
         <nav className={`${css.nav} ${navbarClass} no_drag`}>
       <div className={`content_wrapper ${css.nav_wrap}`}>
-        <button onClick={() => setIsOpen(!isOpen)} >
-          <BsFillGridFill size={"20px"}/>
-        </button>
+        <Link to={"/"}>
+          
+        </Link>
         <Link to={"/"} className={css.profile}>
           <BsFillPersonFill size={"20px"} />
         </Link>
