@@ -36,11 +36,36 @@ export default function Main() {
           `http://localhost:3000/api/cars?sortby=${sortBy}&order=${order}`
         )
         const data = (await response.json()).data
-        console.log(data)
+        // console.log(data)
 
         // console.log(data)
         // Set the sorted data
-        setCarsData(data)
+        setCarsData(
+          data.map((d: any) => ({
+            EasyRentData: {
+              ID: d.id_mobil,
+              PopularityIndex: d.popularity_idx,
+              Imgs: d.images,
+            },
+            CarData: {
+              Brand: d.brand,
+              Model: d.model,
+              ReleaseYear: d.release_year,
+              // Transmissions: [
+              //   { [d.transmissions.transmission_type]: d.transmissions.speed },
+              // ],
+              Transmissions: d.transmissions.map((t: any) => ({
+                [t.transmission_type]: t.speed,
+              })),
+              Engine: d.engine,
+              Power: {
+                HP: d.HP,
+                TQ: d.TRQ,
+              },
+            },
+          }))
+        )
+        console.log('carsData', carsData)
       } catch (error) {
         console.error(error)
       }
@@ -81,3 +106,5 @@ export default function Main() {
     </main>
   )
 }
+
+export type { CarData }
