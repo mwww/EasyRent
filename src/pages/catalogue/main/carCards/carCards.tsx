@@ -153,7 +153,7 @@ export default function CarCards(props: Props) {
                     const S = (v: any) => String(v)
                     const tKeys = Object.keys(t)
                     const tKey = tKeys.length !== 0 ? tKeys[0] : ''
-                    const tKeyAbr = tKey === 'AT' ? 'Automatic' : 'Manual'
+                    const tKeyAbr = tKey === 'AT' ? 'Auto' : 'Manual'
                     const tVal = tKey ? (t[tKey] === 1 ? '' : t[tKey]) : ''
 
                     let tR: String = ''
