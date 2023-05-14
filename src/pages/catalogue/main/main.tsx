@@ -35,7 +35,9 @@ export default function Main() {
         const response = await fetch(
           `http://localhost:3000/api/cars?sortby=${sortBy}&order=${order}`
         )
-        const data = await response.json()
+        const data = (await response.json()).data
+        console.log(data)
+
         // console.log(data)
         // Set the sorted data
         setCarsData(data)
