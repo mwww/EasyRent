@@ -96,9 +96,9 @@ export default function Main() {
       <label htmlFor="sort-by">Sort By: </label>
       <select id="sort-by" onChange={handleSortChange} defaultValue={sortBy}>
         <option value="id">ID</option>
-        <option value="release-year">Release Year</option>
-        <option value="horse-power">Horse Power</option>
-        <option value="torque">Torque</option>
+        <option value="release">Release Year</option>
+        <option value="hp">Horse Power</option>
+        <option value="trq">Torque</option>
         {/* <option value="rent-price">&uarr; Rent Price</option> */}
       </select>
 
@@ -107,4 +107,4 @@ export default function Main() {
   )
 }
 
-export type { CarData }
+export type { CarsData }
