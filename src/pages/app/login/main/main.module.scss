@@ -28,7 +28,6 @@
   justify-content: space-between;
 
   @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-    // background-color: rgb(17 17 17/0.25);
     -webkit-backdrop-filter: blur(5rem) brightness(0.25) saturate(5);
     backdrop-filter: blur(5rem) brightness(0.25) saturate(5);
   }
