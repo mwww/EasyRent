@@ -12,20 +12,29 @@ export default function NavBar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navLinks = [
+  interface NavLinks {
+    id: any
+    url: any
+    Text: String
+  }
+  const navLinks: NavLinks[] = [
     {
+      id: 1,
       url: '/',
       Text: 'Home',
     },
     {
+      id: 2,
       url: '/catalogue',
       Text: 'Catalogue',
     },
     {
+      id: 3,
       url: '/aboutus',
       Text: 'About Us',
     },
     {
+      id: 4,
       url: '/contact',
       Text: 'Contact',
     },
@@ -36,7 +45,7 @@ export default function NavBar() {
         <Link to="/" className="background_def"></Link>
         <ul>
           {navLinks.map((link) => (
-            <li>
+            <li key={link.id}>
               <Link to={link.url}>{link.Text}</Link>
             </li>
           ))}
