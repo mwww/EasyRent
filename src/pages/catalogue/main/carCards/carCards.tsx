@@ -1,6 +1,6 @@
 import css from './carCards.module.scss'
 
-import { CarsData } from '../main'
+import type { CarsData } from '../main'
 
 interface Props {
   CarsData: CarsData[]
