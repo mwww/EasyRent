@@ -69,14 +69,18 @@ button {
   color: transparent;
 }
 
-input {
+input,
+textarea {
   background-color: var(--clr-main-bg);
-  border:  3px solid var(--clr-grey);
+  border: 1px solid var(--clr-grey);
   border-radius: 10px;
-  margin: 10px 0;
-  // height: 40px;
   padding: 5px;
   text-transform: none;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 1px solid var(--clr-grey);
 }
 
 .content_wrapper {
@@ -103,5 +107,3 @@ input {
   background-position: center;
   background-size: cover;
 }
-
-
