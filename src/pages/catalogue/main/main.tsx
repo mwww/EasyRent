@@ -36,9 +36,6 @@ export default function Main() {
           `http://localhost:3000/api/cars?sortby=${sortBy}&order=${order}`
         )
         const data = (await response.json()).data
-        // console.log(data)
-
-        // console.log(data)
         // Set the sorted data
         setCarsData(
           data.map((d: any) => ({
@@ -84,9 +81,6 @@ export default function Main() {
   }
 
   return (
-    // TODO: replace value with backend's end points.
-    // e.g. value="trq"(torque) url: `http://localhost:3000/api/cars/sortby/trq`
-
     <main className={`content_wrapper`}>
       <label htmlFor="order">Order: </label>
       <select id="order" onChange={handleOrderChange} defaultValue={order}>
