@@ -24,15 +24,85 @@ const main = () => {
     }
   }
 
-  useEffect(() => {
-    document.title = 'Login - EasyRent'
-  }, [])
+  // return (
+  //   <main className={`${css.bg} background_def`}>
+  //     <div className={css.container}>
+  //       <div className={css.form}>
+  //         <h1>Welcome</h1>
+  //         <p>Please enter your details.</p>
+  //         <form className="" onSubmit={auth}>
+  //           <label htmlFor="Email"></label>
+  //           <input
+  //             type="text"
+  //             placeholder="Email"
+  //             value={email}
+  //             onChange={(e) => setEmail(e.target.value)}
+  //           />
+  //           <label htmlFor="Password"></label>
+  //           <input
+  //             type="password"
+  //             placeholder="Password"
+  //             value={password}
+  //             onChange={(e) => setPassword(e.target.value)}
+  //           />
+  //           <div className={css.btn}>
+  //             <button>Log In</button>
+  //           </div>
+  //         </form>
+  //         <div className={css.register}>
+  //           <p>Don't have an account ?</p>
+  //           <Link to={'/register'}>
+  //             <a className={css.text}>Register</a>
+  //           </Link>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </main>
+  // )
   return (
-    <main className={`${css.bg} background_def`}>
+    <main className={`${css.main} background_def`}>
+      {/* <div className={css.form}>
+        <h1>Welcome</h1>
+        <p>Please enter your details.</p>
+        <form className="" onSubmit={auth}>
+          <label htmlFor="Email"></label>
+          <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="Password"></label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div className={css.btn}>
+            <button>Log In</button>
+          </div>
+        </form>
+        <div className={css.register}>
+          <p>Don't have an account ?</p>
+          <Link to={'/register'}>
+            <a className={css.text}>Register</a>
+          </Link>
+        </div>
+      </div> */}
       <div className={css.container}>
-        <div className={css.form}>
-          <h1>Welcome</h1>
-          <p>Please enter your details.</p>
+        <div className={css.side}>
+          <div>
+            <h1>Welcome to EasyRent!</h1>
+            <p>Please enter your details.</p>
+          </div>
+          <div>
+            <p>Don't have an account ?</p>
+            <Link to={'/register'}>Register</Link>
+          </div>
+        </div>
+        <div className={css.content}>
+          <p>fill this form to login</p>
           <form className="" onSubmit={auth}>
             <label htmlFor="Email"></label>
             <input
@@ -48,16 +118,8 @@ const main = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className={css.btn}>
-              <button>Log In</button>
-            </div>
+            <button>Log In</button>
           </form>
-          <div className={css.register}>
-            <p>Don't have an account ?</p>
-            <Link to={'/register'}>
-              <a className={css.text}>Register</a>
-            </Link>
-          </div>
         </div>
       </div>
     </main>
