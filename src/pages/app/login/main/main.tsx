@@ -9,7 +9,7 @@ const main = () => {
   const [msg, setMsg] = useState('')
   const navigate = useNavigate()
 
-  const auth = async (e) => {
+  const auth = async (e: any) => {
     e.preventDefault()
     try {
       await axios.post('http://localhost:3000/api/login', {
