@@ -32,12 +32,12 @@ const main = () => {
             <p>Please enter your details.</p>
           </div>
           <div>
-            <p>Don't have an account ?</p>
-            <Link to={'/register'}>Register</Link>
+            <p>Don't have an account?</p>
+            <Link to={'/register'}>Register now</Link>
           </div>
         </div>
         <div className={css.content}>
-          <p>fill this form to login</p>
+          {/* <p>fill this form to login</p> */}
           <form className="" onSubmit={auth}>
             <label htmlFor="Email"></label>
             <input
