@@ -35,7 +35,7 @@ export default function NavBar() {
     },
     {
       id: 4,
-      url: '/contact',
+      url: '/dummy-page',
       Text: 'Contact',
     },
   ]
