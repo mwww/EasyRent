@@ -30,27 +30,28 @@ export default function CarCards(props: Props) {
             <div>
               <div>
                 <p>
-                  {car.CarData.Transmissions.map((t: any, index: any) => {
-                    const S = (v: any) => String(v)
-                    const tKeys = Object.keys(t)
-                    const tKey = tKeys.length !== 0 ? tKeys[0] : ''
-                    const tKeyAbr = tKey === 'AT' ? 'Auto' : 'Manual'
-                    const tVal = tKey ? (t[tKey] === 1 ? '' : t[tKey]) : ''
+                  {Object.entries(car.CarData.Transmissions)
+                    .map((t: any, index: any) => {
+                      const S = (v: any) => String(v)
+                      const tKeys = Object.keys(t)
+                      const tKey = tKeys.length !== 0 ? tKeys[0] : ''
+                      const tKeyAbr = tKey === 'AT' ? 'Auto' : 'Manual'
+                      const tVal = tKey ? (t[tKey] === 1 ? '' : t[tKey]) : ''
 
-                    let tR: String = ''
-                    tR += tVal === '' ? S(tKeyAbr) : `${tVal} Speed ${tKeyAbr}`
-                    tR +=
-                      index + 1 === car.CarData.Transmissions.length
-                        ? '.'
-                        : ', '
+                      let tR: String = ''
+                      tR +=
+                        tVal === '' ? S(tKeyAbr) : `${tVal} Speed ${tKeyAbr}`
+                      tR +=
+                        index + 1 === car.CarData.Transmissions.length
+                          ? '.'
+                          : ', '
 
-                    return tR
-                  }).join('')}
+                      return tR
+                    })
+                    .join('')}
                 </p>
                 <p>{car.CarData.Engine}.</p>
-                <p>
-                  {`${car.CarData.Power.HP} hp, ${car.CarData.Power.TQ} lb-ft.`}
-                </p>
+                <p>{`${car.CarData.Power.HP} hp, ${car.CarData.Power.TQ} lb-ft.`}</p>
               </div>
               <div className={css.action}>
                 <a
