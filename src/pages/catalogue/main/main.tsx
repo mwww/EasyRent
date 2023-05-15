@@ -48,9 +48,6 @@ export default function Main() {
               Brand: d.brand,
               Model: d.model,
               ReleaseYear: d.release_year,
-              // Transmissions: [
-              //   { [d.transmissions.transmission_type]: d.transmissions.speed },
-              // ],
               Transmissions: d.transmissions.map((t: any) => ({
                 [t.transmission_type]: t.speed,
               })),
