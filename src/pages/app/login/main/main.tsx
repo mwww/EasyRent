@@ -23,35 +23,6 @@ const main = () => {
       }
     }
   }
-
-  // return (
-  //   <main className={`${css.bg} background_def`}>
-  //     <div className={css.container}>
-  //       <div className={css.form}>
-  //         <h1>Welcome</h1>
-  //         <p>Please enter your details.</p>
-  //         <form className="" onSubmit={auth}>
-  //           <label htmlFor="Email"></label>
-  //           <input
-  //             type="text"
-  //             placeholder="Email"
-  //             value={email}
-  //             onChange={(e) => setEmail(e.target.value)}
-  //           />
-  //           <label htmlFor="Password"></label>
-  //           <input
-  //             type="password"
-  //             placeholder="Password"
-  //             value={password}
-  //             onChange={(e) => setPassword(e.target.value)}
-  //           />
-  //           <div className={css.btn}>
-  //             <button>Log In</button>
-  //           </div>
-  //         </form>
-  //         <div className={css.register}>
-  //           <p>Don't have an account ?</p>
-  //           <Link to={'/register'}>
   return (
     <main className={`${css.main} background_def`}>
       <div className={css.container}>
