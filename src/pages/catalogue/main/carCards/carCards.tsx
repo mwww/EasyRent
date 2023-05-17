@@ -33,6 +33,11 @@ export default function CarCards(props: Props) {
               <div>
                 <p>
                   {/*
+
+                    ===
+                    DOCS. DO NOT REMOVE!
+                    ===
+
                     okay, this one is so complex that it makes my head explodes multiple times.
                     so here's what's going on, we want to get all the transmissions for all cars and format it.
                     to do that, we need to get all the transmissions and format it one-by-one.
