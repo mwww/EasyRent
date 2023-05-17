@@ -1,6 +1,7 @@
 import css from './carCards.module.scss'
 
 import type { CarsData } from '../main'
+import { Link } from 'react-router-dom'
 
 interface Props {
   CarsData: CarsData[]
@@ -81,9 +82,9 @@ export default function CarCards(props: Props) {
                 <p>{`${car.CarData.Power.HP} hp, ${car.CarData.Power.TQ} lb-ft.`}</p>
               </div>
               <div className={css.action}>
-                <a href={`/details/${car.EasyRentData.ID}`} draggable="false">
+                <Link to={`/details/${car.EasyRentData.ID}`} draggable="false">
                   <button>Rent This Car Now!</button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
