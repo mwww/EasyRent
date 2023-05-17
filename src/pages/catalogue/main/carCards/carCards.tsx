@@ -54,10 +54,7 @@ export default function CarCards(props: Props) {
                 <p>{`${car.CarData.Power.HP} hp, ${car.CarData.Power.TQ} lb-ft.`}</p>
               </div>
               <div className={css.action}>
-                <a
-                  href={`/app/rent?carID=${car.EasyRentData.ID}`}
-                  draggable="false"
-                >
+                <a href={`/details/${car.EasyRentData.ID}`} draggable="false">
                   <button>Rent This Car Now!</button>
                 </a>
               </div>
