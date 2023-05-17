@@ -57,10 +57,6 @@ export default function Details() {
   }, [])
 
   useEffect(() => {
-    // document.title =
-    //   (!isLoading && typeof carData === 'object' && carData
-    //     ? carData!.model
-    //     : 'Detail') + ' - EasyRent'
     document.title =
       (typeof carData === 'object' && carData && !e
         ? carData!.model
@@ -69,28 +65,6 @@ export default function Details() {
         : 'Detail') + ' - EasyRent'
   }, [isLoading, carData, e])
 
-  // if (carData && !e) {
-  //   return (
-  //     <>
-  //       <NavBar />
-  //       {/* <UniversalHero
-  //         text={isLoading ? 'loading...' : `${carData.brand} ${carData.model}`}
-  //       /> */}
-  //       {/* <p>{JSON.stringify(carData)}</p> */}
-  //       {/* <Bg imgUrl={isLoading ? '' : carData.images[0]} /> */}
-  //       <Main carData={carData} />
-  //       <Footer />
-  //     </>
-  //   )
-  // } else if (!carData && e) {
-  //   return (
-  //     <>
-  //       <NavBar />
-  //       <UniversalHero text={`Error`} />
-  //       <Footer />
-  //     </>
-  //   )
-  // }
   return (
     <>
       <NavBar />
