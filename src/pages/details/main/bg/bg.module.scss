@@ -1,0 +1,16 @@
+.root_bg {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+
+  // background-color: aqua;
+
+  filter: blur(5rem) brightness(0.5) saturate(0.5);
+  opacity: 0.5;
+
+  overflow: hidden;
+
+  z-index: -69;
+}
