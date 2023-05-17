@@ -57,16 +57,17 @@ export default function Details() {
   }, [])
 
   useEffect(() => {
-    document.title = (isLoading ? 'Detail' : carData!.model) + ' - EasyRent'
+    document.title =
+      (isLoading && carData ? 'Detail' : carData!.model) + ' - EasyRent'
   }, [])
 
   if (carData && !e) {
     return (
       <>
         <NavBar />
-        <UniversalHero
+        {/* <UniversalHero
           text={isLoading ? 'loading...' : `${carData.brand} ${carData.model}`}
-        />
+        /> */}
         {/* <p>{JSON.stringify(carData)}</p> */}
         {/* <Bg imgUrl={isLoading ? '' : carData.images[0]} /> */}
         <Main carData={carData} />
