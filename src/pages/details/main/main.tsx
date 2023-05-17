@@ -24,7 +24,10 @@ export default function Main(props: Props) {
       <Bg imgUrl="" />
       <div className={css.car_detail}>
         <div></div>
-        <div></div>
+        <div>
+          <h3>{carData.model}</h3>
+          <p>{carData.brand}</p>
+        </div>
       </div>
     </main>
   )
