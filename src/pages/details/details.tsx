@@ -31,7 +31,7 @@ interface Transmission {
 
 export default function Details() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [carData, setCarData] = useState<CarData>()
+  const [carData, setCarData] = useState<CarData | string>('')
   const [e, setE] = useState<boolean>(false)
   const params = useParams()
 
@@ -44,7 +44,7 @@ export default function Details() {
         )
         const res = (await response.json()).data
 
-        console.log(res)
+        // console.log(res)
         if (res) {
           setCarData(res)
           setIsLoading(false)
@@ -57,32 +57,54 @@ export default function Details() {
   }, [])
 
   useEffect(() => {
+    // document.title =
+    //   (!isLoading && typeof carData === 'object' && carData
+    //     ? carData!.model
+    //     : 'Detail') + ' - EasyRent'
     document.title =
-      (isLoading && carData ? 'Detail' : carData!.model) + ' - EasyRent'
-  }, [])
+      (typeof carData === 'object' && carData && !e
+        ? carData!.model
+        : e
+        ? 'Error'
+        : 'Detail') + ' - EasyRent'
+  }, [isLoading, carData, e])
 
-  if (carData && !e) {
-    return (
-      <>
-        <NavBar />
-        {/* <UniversalHero
-          text={isLoading ? 'loading...' : `${carData.brand} ${carData.model}`}
-        /> */}
-        {/* <p>{JSON.stringify(carData)}</p> */}
-        {/* <Bg imgUrl={isLoading ? '' : carData.images[0]} /> */}
+  // if (carData && !e) {
+  //   return (
+  //     <>
+  //       <NavBar />
+  //       {/* <UniversalHero
+  //         text={isLoading ? 'loading...' : `${carData.brand} ${carData.model}`}
+  //       /> */}
+  //       {/* <p>{JSON.stringify(carData)}</p> */}
+  //       {/* <Bg imgUrl={isLoading ? '' : carData.images[0]} /> */}
+  //       <Main carData={carData} />
+  //       <Footer />
+  //     </>
+  //   )
+  // } else if (!carData && e) {
+  //   return (
+  //     <>
+  //       <NavBar />
+  //       <UniversalHero text={`Error`} />
+  //       <Footer />
+  //     </>
+  //   )
+  // }
+  return (
+    <>
+      <NavBar />
+      {typeof carData === 'object' && carData && !e ? (
         <Main carData={carData} />
-        <Footer />
-      </>
-    )
-  } else if (!carData && e) {
-    return (
-      <>
-        <NavBar />
+      ) : e ? (
         <UniversalHero text={`Error`} />
-        <Footer />
-      </>
-    )
-  }
+      ) : (
+        'Loading...'
+      )}
+
+      <Footer />
+    </>
+  )
 }
 
 export type { CarData }
