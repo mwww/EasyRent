@@ -56,8 +56,6 @@ export default function CarCards(props: Props) {
 
                     we done with it, we now just need to format it. and the code is pretty much self explainable.
                   */}
-                  {JSON.stringify(Object.keys(car.CarData.Transmissions[0]))}{' '}
-                  <br />
                   {Object.entries(car.CarData.Transmissions)
                     .map((tOG: any, index: any) => {
                       const t = tOG[1]
@@ -66,8 +64,6 @@ export default function CarCards(props: Props) {
                       const tKey = tKeys.length !== 0 ? tKeys[0] : ''
                       const tKeyAbr = tKey === 'AT' ? 'Auto' : 'Manual'
                       const tVal = tKey ? (t[tKey] === 1 ? '' : t[tKey]) : ''
-
-                      console.log(index, tKey)
 
                       let tR: String =
                         tVal === '' ? S(tKeyAbr) : `${tVal} Speed ${tKeyAbr}`
