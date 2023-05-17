@@ -35,7 +35,8 @@ export default function CarCards(props: Props) {
                   {/*
 
                     ===
-                    DOCS. DO NOT REMOVE!
+                      DOCS.
+                      DO NOT REMOVE!
                     ===
 
                     okay, this one is so complex that it makes my head explodes multiple times.
