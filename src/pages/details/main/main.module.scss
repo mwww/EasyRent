@@ -1,5 +1,13 @@
 .car_detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   > div:nth-child(1) {
+    height: 100px;
     background-color: antiquewhite;
+    aspect-ratio: 1 / 1;
+
+    border: 1px solid var(--clr-grey);
+    border-radius: 10px;
   }
 }
