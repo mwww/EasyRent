@@ -80,8 +80,8 @@ export default function Superiority() {
   ]
   return (
     <section className={css.cards}>
-      {superior_data.map((data) => (
-        <div className={css.card}>
+      {superior_data.map((data, index) => (
+        <div className={css.card} key={index}>
           <h3>
             {data.illustration[0]}
             &nbsp;
