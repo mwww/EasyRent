@@ -10,7 +10,7 @@ import Main from './main/main'
 
 export default function DummyPage() {
   useEffect(() => {
-    document.title = 'About Us - EasyRent'
+    document.title = 'Dummy Page - EasyRent'
   }, [])
   return (
     <>
