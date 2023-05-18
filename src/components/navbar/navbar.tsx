@@ -13,28 +13,23 @@ export default function NavBar() {
   }, [])
 
   interface NavLinks {
-    id: any
     url: any
     Text: String
   }
   const navLinks: NavLinks[] = [
     {
-      id: 1,
       url: '/',
       Text: 'Home',
     },
     {
-      id: 2,
       url: '/catalogue',
       Text: 'Catalogue',
     },
     {
-      id: 3,
       url: '/aboutus',
       Text: 'About Us',
     },
     {
-      id: 4,
       url: '/dummy-page',
       Text: 'Contact',
     },
@@ -44,8 +39,8 @@ export default function NavBar() {
       <div className={`content_wrapper ${css.nav_wrap}`}>
         <Link to="/" className="background_def"></Link>
         <ul>
-          {navLinks.map((link) => (
-            <li key={link.id}>
+          {navLinks.map((link, index) => (
+            <li key={index}>
               <Link to={link.url}>{link.Text}</Link>
             </li>
           ))}
