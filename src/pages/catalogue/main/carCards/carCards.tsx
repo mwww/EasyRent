@@ -12,12 +12,13 @@ export default function CarCards(props: Props) {
 
   return (
     <section className={css.cards}>
-      {props.CarsData.map((car) => (
+      {props.CarsData.map((car, index) => (
         <div
           className={`background_def ${css.card}`}
           style={{
             backgroundImage: `url(/imgs/cars/${car.EasyRentData.Imgs[0]})`,
           }}
+          key={index}
         >
           <div
             className="background_def"
