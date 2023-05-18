@@ -1,28 +1,15 @@
 .container {
-  overflow: scroll;
-  height: 100%;
-  position: relative;
+  padding: 0 50px;
 
   > div:first-child {
-    padding: 20px 50px;
+    padding: 20px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    position: sticky;
-    top: 0;
-
-    background-color: rgb(17 17 17/0.75);
-    -webkit-backdrop-filter: blur(2.5rem);
-    backdrop-filter: blur(2.5rem);
-
-    z-index: 1;
-
     > div:first-child > h3 {
       font-weight: bold;
       font-size: 2.5rem;
     }
-
     > div:last-child {
       display: flex;
       align-items: center;
@@ -31,21 +18,22 @@
   }
 }
 
-.table_container {
-  width: 100%;
-  padding: 0 50px;
-  padding-bottom: 50px;
-}
-
 .table {
+  // display: flex;
   width: 100%;
-  border-collapse: collapse;
+
+  // table-layout: fixed; /* Ensure all columns have equal width */
+  border-collapse: collapse; /* Collapse table borders */
 
   th,
   td {
     width: fit-content;
-    padding: 8px;
+    padding: 8px; /* Adjust the padding as needed */
     text-align: left;
+    // border: 1px solid var(--clr-grey); /* Add borders between cells */
+    // resize: horizontal; /* Allow column resizing */
+    // overflow: auto; /* Add scrollbar when content overflows */
+
     position: relative;
   }
 
@@ -61,14 +49,6 @@
   }
 
   > thead {
-    position: sticky;
-    top: 110px;
-
-    background-color: rgb(17 17 17/0.75);
-    -webkit-backdrop-filter: blur(2.5rem);
-    backdrop-filter: blur(2.5rem);
-
-    z-index: 1;
     > tr {
       > th {
         cursor: pointer;
@@ -76,18 +56,14 @@
           cursor: auto;
         }
       }
-
       > th::before {
         background-color: hsla(0, 0%, 25%, 0.5);
         border: 1px solid var(--clr-grey);
-        // border-bottom: 1px solid var(--clr-grey);
       }
-
       > th:first-child::before {
         border-top-left-radius: 10px;
         border-bottom-left-radius: 2.5px;
       }
-
       > th:last-child::before {
         border-top-right-radius: 10px;
         border-bottom-right-radius: 2.5px;
@@ -99,33 +75,24 @@
     > tr {
       > td::before {
         border: 1px solid var(--clr-grey);
-        // border-bottom: 1px solid var(--clr-grey);
       }
-
       > td:first-child::before {
         border-top-left-radius: 2.5px;
         border-bottom-left-radius: 2.5px;
       }
-
       > td:last-child::before {
         border-top-right-radius: 2.5px;
         border-bottom-right-radius: 2.5px;
       }
     }
-
     > tr:nth-child(even) > td::before {
       background-color: hsla(0, 0%, 19%, 0.5);
     }
-
     > tr:last-child {
-      > td::before {
-        // border-bottom: none;
-      }
       > td:first-child::before {
         border-bottom-left-radius: 10px;
         border-top-left-radius: 2.5px;
       }
-
       > td:last-child::before {
         border-bottom-right-radius: 10px;
         border-top-right-radius: 2.5px;
