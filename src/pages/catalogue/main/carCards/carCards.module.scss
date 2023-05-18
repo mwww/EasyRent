@@ -2,6 +2,7 @@
   display: grid;
   grid-gap: 25px;
   grid-template-columns: repeat(3, 1fr);
+
   // grid-template-rows: repeat(1, 1fr);
 
   @media only screen and (max-width: 1199px) {
@@ -27,6 +28,7 @@
 
     &:first-child {
       // background-image: url('/imgs/cars/1.jpg');
+      // width: 300px;
       height: 300px;
       border-left: 1px solid var(--clr-grey);
       border-top: 1px solid var(--clr-grey);
@@ -53,6 +55,7 @@
 
 .description {
   width: max-content;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -80,6 +83,49 @@
     width: 100%;
     > button {
       font-weight: 700;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .cards.style_row {
+    grid-template-columns: repeat(1, 1fr);
+    @media only screen and (max-width: 1199px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    > .card {
+      flex-direction: row;
+      > div {
+        width: 100%;
+
+        &:first-child {
+          // background-image: url('/imgs/cars/1.jpg');
+          width: 350px;
+          // height: 300px;
+          border-left: 1px solid var(--clr-grey);
+          border-top: 1px solid var(--clr-grey);
+          border-bottom: 1px solid var(--clr-grey);
+          border-radius: 10px 0 0 10px;
+        }
+        &:last-child {
+          height: 100%;
+          flex: 1;
+          > div:first-child,
+          > div > div:first-child {
+            margin: 0;
+            margin-bottom: 25px;
+          }
+          padding: 25px;
+
+          border-top: 1px solid var(--clr-grey);
+          border-right: 1px solid var(--clr-grey);
+          border-bottom: 1px solid var(--clr-grey);
+          border-radius: 0 10px 10px 0;
+        }
+      }
+    }
+    > .description {
       width: 100%;
     }
   }
