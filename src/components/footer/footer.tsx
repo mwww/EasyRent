@@ -72,8 +72,12 @@ export default function Footer() {
   ]
   return (
     <>
-      {Array.from({ length: 2 }).map((_, index) => (
-        <footer className={`${css.footer} ${index && css.isReal}`}>
+      {Array.from({ length: 2 }).map((_, isShow) => (
+        // if isShow === 1 then show footer.
+        <footer
+          className={`${css.footer} ${isShow && css.isReal}`}
+          key={isShow}
+        >
           <div className={`content_wrapper`}>
             {/* <h1>footer!</h1> */}
             {/* <a href="" className={`background_def ${css.logo}`}></a> */}
@@ -85,12 +89,12 @@ export default function Footer() {
               </div>
 
               {/* why do I call it "cat"? IDK I don't even remember writing this. probably my subconscious self. */}
-              {footerLinks.map((cat) => (
-                <div>
+              {footerLinks.map((cat, index) => (
+                <div key={index}>
                   <h3>{cat.Title}</h3>
                   <ul>
-                    {cat.Links.map((link) => (
-                      <li>
+                    {cat.Links.map((link, innerIndex) => (
+                      <li key={innerIndex}>
                         {/* <a href={link.Link}>{link.Text}</a> */}
                         <Link to={link.url}>{link.Text}</Link>
                       </li>
@@ -129,16 +133,14 @@ export default function Footer() {
           <div className={css.legalStuff}>
             <div className={`content_wrapper ${css.container}`}>
               <p>© Copyright 2023 - EasyRent</p>
-              <p>
-                <ul className={css.legalLinks}>
-                  <li>
-                    <a href="">Privacy Policy</a>
-                  </li>
-                  <li>
-                    <a href="">Terms and Conditions</a>
-                  </li>
-                </ul>
-              </p>
+              <ul className={css.legalLinks}>
+                <li>
+                  <a href="">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="">Terms and Conditions</a>
+                </li>
+              </ul>
             </div>
           </div>
         </footer>
