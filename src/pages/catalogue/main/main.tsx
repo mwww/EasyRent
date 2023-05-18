@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import CarCards from './carCards/carCards'
 
-interface CarData {
+import css from './main.module.scss'
+
+import Toggle from '../../../components/toggle/toggle'
+
+interface InnerCarData {
   Brand: string
   Model: string
   ReleaseYear: number
@@ -19,15 +23,17 @@ interface EasyRentData {
   PopularityIndex: number
   Imgs: string[]
 }
-interface CarsData {
+interface CarData {
   EasyRentData: EasyRentData
-  CarData: CarData
+  CarData: InnerCarData
 }
 
 export default function Main() {
-  const [carsData, setCarsData] = useState<CarsData[]>([]) // initialize the state with an empty array
+  const [carsData, setCarsData] = useState<CarData[]>([])
   const [order, setOrder] = useState<string>('asc')
   const [sortBy, setSortBy] = useState<string>('id')
+  const [searchQuery, setSearchQuery] = useState<string>('')
+  const [cardStyle, setCardStyle] = useState<string>('row')
 
   useEffect(() => {
     async function fetchData() {
@@ -59,43 +65,94 @@ export default function Main() {
             },
           }))
         )
-        // console.log('carsData', carsData)
       } catch (error) {
         console.error(error)
       }
     }
     fetchData()
-  }, [sortBy, order]) // run whenever sortBy and order changes
-
-  const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setOrder(event.target.value)
-  }
+  }, [sortBy, order])
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedSortBy = event.target.value
-    console.log(selectedSortBy)
     setSortBy(selectedSortBy)
   }
 
+  const filteredCarsData = carsData.filter((carData) => {
+    const { Brand, Model, ReleaseYear, Engine, Power } = carData.CarData
+    const searchTerm = searchQuery.toLowerCase()
+
+    const includesSearchTerm = (str: string) =>
+      str.toLowerCase().includes(searchTerm)
+    const hasSearchTerm = (obj: object) =>
+      Object.values(obj).some((value) =>
+        typeof value === 'string' ? includesSearchTerm(value) : false
+      )
+
+    return (
+      includesSearchTerm(Brand) ||
+      includesSearchTerm(Model) ||
+      String(ReleaseYear).includes(searchTerm) ||
+      includesSearchTerm(Engine) ||
+      hasSearchTerm(Power) ||
+      includesSearchTerm(String(Power.HP)) ||
+      includesSearchTerm(String(Power.TQ))
+    )
+  })
+
   return (
     <main className={`content_wrapper`}>
-      <label htmlFor="order">Order: </label>
-      <select id="order" onChange={handleOrderChange} defaultValue={order}>
-        <option value="asc">&darr;</option>
-        <option value="desc">&uarr;</option>
-      </select>
-      <label htmlFor="sort-by">Sort By: </label>
-      <select id="sort-by" onChange={handleSortChange} defaultValue={sortBy}>
-        <option value="id">ID</option>
-        <option value="release">Release Year</option>
-        <option value="hp">Horse Power</option>
-        <option value="trq">Torque</option>
-        {/* <option value="rent-price">&uarr; Rent Price</option> */}
-      </select>
+      <div className={css.options}>
+        <div>
+          <label htmlFor="sort-by">Sort:</label>
+          <Toggle
+            Labels={['↓', '↑']}
+            Values={['asc', 'desc']}
+            OnChange={setOrder}
+            DefaultValue={order}
+          />
+          <select
+            id="sort-by"
+            onChange={handleSortChange}
+            defaultValue={sortBy}
+          >
+            <option value="id">ID</option>
+            <option value="popularity">popularity</option>
+            <option value="release">Release Year</option>
+            <option value="price">price</option>
+            <option value="hp">Horse Power</option>
+            <option value="trq">Torque</option>
+          </select>
+        </div>
+        <div>
+          {searchQuery ? (
+            <p>
+              {filteredCarsData.length
+                ? `${filteredCarsData.length} Cars Found!`
+                : 'No Car Found!'}
+            </p>
+          ) : (
+            ''
+          )}
 
-      <CarCards CarsData={carsData} />
+          <input
+            id="search"
+            type="text"
+            value={searchQuery}
+            placeholder="Search..."
+            onChange={(event) => setSearchQuery(event.target.value)}
+          />
+          <Toggle
+            Labels={['Row', 'Grid']}
+            Values={['row', 'grid']}
+            OnChange={setCardStyle}
+            DefaultValue={cardStyle}
+          />
+        </div>
+      </div>
+
+      <CarCards CarsData={filteredCarsData} CardStyle={cardStyle} />
     </main>
   )
 }
 
-export type { CarsData }
+export type { CarData }
