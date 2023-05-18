@@ -4,7 +4,7 @@ import css from './overview.module.scss'
 
 export default function Overview() {
   useEffect(() => {
-    document.title = 'Overview - EasyRent'
+    document.title = 'Appointments - EasyRent'
   }, [])
   return (
     <>
