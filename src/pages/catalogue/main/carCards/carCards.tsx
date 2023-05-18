@@ -1,17 +1,21 @@
 import css from './carCards.module.scss'
 
-import type { CarsData } from '../main'
+import type { CarData } from '../main'
 import { Link } from 'react-router-dom'
 
 interface Props {
-  CarsData: CarsData[]
+  CarsData: CarData[]
+  CardStyle: string
 }
 
 export default function CarCards(props: Props) {
   // console.log(props.CarsData && props.CarsData[0].CarData.Transmissions)
 
+  // const cardStyle = props.Style ? props.Style : 'row'
+  const cardStyle = props.CardStyle === 'grid' ? css.style_grid : css.style_row
+
   return (
-    <section className={css.cards}>
+    <section className={`${css.cards} ${cardStyle}`}>
       {props.CarsData.map((car, index) => (
         <div
           className={`background_def ${css.card}`}
