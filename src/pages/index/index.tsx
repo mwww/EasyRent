@@ -1,10 +1,8 @@
 import { useEffect } from 'react'
 
 // External Components
-import HoverEffect from '../../components/hoverEffect/hoverEffect'
 import NavBar from '../../components/navbar/navbar'
 import Footer from '../../components/footer/footer'
-import LegalStuff from '../../components/legalStuff/legalStuff'
 
 // internal Components
 import Hero from './hero/hero'
@@ -16,12 +14,10 @@ export default function Index() {
   }, [])
   return (
     <>
-      {/* <HoverEffect /> */}
       <NavBar />
       <Hero />
       <Main />
       <Footer />
-      {/* <LegalStuff /> */}
     </>
   )
 }
