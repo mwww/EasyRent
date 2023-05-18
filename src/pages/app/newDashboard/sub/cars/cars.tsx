@@ -23,6 +23,7 @@ export default function Cars() {
   const [carsData, setCarsData] = useState<CarData[]>([])
   const [tableData, setTableData] = useState<CarData[]>([])
   const [sorting, setSorting] = useState({ column: '', direction: 'asc' })
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     async function fetchData() {
@@ -52,8 +53,16 @@ export default function Cars() {
     } else {
       setSorting({ column, direction: 'asc' })
     }
+    setSearchQuery('') // Reset search query
   }
-  const sortedData = tableData.sort((a: any, b: any) => {
+  const filteredData = searchQuery
+    ? tableData.filter((row) =>
+        Object.values(row).some((value) =>
+          value.toString().toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      )
+    : tableData
+  const sortedData = filteredData.sort((a: any, b: any) => {
     const { column, direction } = sorting
     const aValue = a[column]
     const bValue = b[column]
@@ -70,6 +79,21 @@ export default function Cars() {
       {/* modal here */}
       {/* end modal */}
       <div className={css.container}>
+        <div>
+          <div>
+            <h3>Cars</h3>
+            <p>{carsData.length} cars found!</p>
+          </div>
+          <div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search..."
+            />
+            <p>menu (add car, sorting)</p>
+          </div>
+        </div>
         <table className={css.table}>
           <thead>
             <tr>
