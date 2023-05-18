@@ -20,7 +20,7 @@ export default function Main(props: Props) {
     )
   }
   return (
-    <main className={`content_wrapper`}>
+    <main className={`content_wrapper ${css.main}`}>
       <Bg imgUrl="" />
       <div className={css.car_detail}>
         <div></div>
