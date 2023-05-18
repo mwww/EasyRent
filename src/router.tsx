@@ -13,6 +13,11 @@ import Register from './pages/app/register/register'
 
 import Dashboard from './pages/app/dashboard/dashboard'
 
+import NewDashboard from './pages/app/newDashboard/newDashboard'
+import Overview from './pages/app/newDashboard/sub/overview/overview'
+import Cars from './pages/app/newDashboard/sub/cars/cars'
+import Appointments from './pages/app/newDashboard/sub/appointments/appointments'
+
 import E404 from './pages/e404/e404'
 
 export default function Router() {
@@ -33,6 +38,16 @@ export default function Router() {
 
         {/* management */}
         <Route path="/admin" element={<Dashboard />} />
+        {/* new management */}
+        <Route
+          path="/new/admin"
+          element={<Navigate to="/new/admin/overview" replace />}
+        />
+        <Route path="/new/admin" element={<NewDashboard />}>
+          <Route path="overview" element={<Overview />} />
+          <Route path="cars" element={<Cars />} />
+          <Route path="appointments" element={<Appointments />} />
+        </Route>
 
         <Route path="*" element={<E404 />} />
       </Routes>
