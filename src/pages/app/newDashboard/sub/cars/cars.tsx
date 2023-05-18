@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import css from './cars.module.scss'
 
+import Confirmation from '../../modals/confirmation/confirmation'
+
 interface CarData {
   id_mobil: number
   popularity_idx: number
@@ -22,6 +24,7 @@ export default function Cars() {
     direction: 'asc' | 'desc'
   }>({ column: '', direction: 'asc' })
   const [searchQuery, setSearchQuery] = useState('')
+  const [confirmation, setConfirmation] = useState<React.ReactNode>(null)
 
   useEffect(() => {
     document.title = 'Overview - EasyRent'
@@ -57,6 +60,27 @@ export default function Cars() {
     setSearchQuery('')
   }
 
+  const deleteCar = (id: number) => {
+    const confirmationComponent = (
+      <Confirmation
+        Q="Are You Sure?"
+        Msg={`Are you sure you want to delete a car with the id ${id}?`}
+        Url=""
+        ReqMtd=""
+        OnCancel={modalCancel}
+      />
+    )
+    setConfirmation(confirmationComponent)
+  }
+
+  const modalCancel = () => {
+    setConfirmation(null)
+  }
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value)
+  }
+
   const filteredData = searchQuery
     ? tableData.filter((row) =>
         Object.values(row).some((value) =>
@@ -73,14 +97,11 @@ export default function Cars() {
     return direction === 'asc' ? aValue - bValue : bValue - aValue
   })
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value)
-  }
-
   return (
     <>
       {/* ========== */}
       {/* modal here */}
+      {confirmation}
       {/* ========== */}
       <div className={css.container}>
         <div>
@@ -128,7 +149,18 @@ export default function Cars() {
                   <td>{row.engine}</td>
                   <td>{row.HP}</td>
                   <td>{row.TRQ}</td>
-                  <td>del, edit</td>
+                  <td>
+                    <a
+                      href=""
+                      onClick={(e) => {
+                        e.preventDefault()
+                        deleteCar(row.id_mobil)
+                      }}
+                    >
+                      del
+                    </a>
+                    , edit
+                  </td>
                 </tr>
               ))}
             </tbody>
