@@ -1,5 +1,6 @@
 :root {
   --sz-nav_height: 65px;
+
   --clr-main-bg: black;
   --clr-main: hsl(0, 0%, 85%);
   --clr-grey: hsla(0, 0%, 50%, 0.5);
@@ -95,7 +96,6 @@ select:focus {
 
 .no_drag {
   -webkit-user-drag: none;
-  user-drag: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
