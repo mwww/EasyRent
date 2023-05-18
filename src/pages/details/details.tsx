@@ -62,7 +62,7 @@ export default function Details() {
         ? carData!.model
         : e
         ? 'Error'
-        : 'Detail') + ' - EasyRent'
+        : 'Loading...') + ' - EasyRent'
   }, [isLoading, carData, e])
 
   return (
