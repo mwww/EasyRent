@@ -59,7 +59,7 @@ export default function Main() {
             },
           }))
         )
-        console.log('carsData', carsData)
+        // console.log('carsData', carsData)
       } catch (error) {
         console.error(error)
       }
