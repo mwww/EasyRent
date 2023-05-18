@@ -1,0 +1,38 @@
+.container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 69696969696969696969;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  -webkit-backdrop-filter: blur(1rem);
+  backdrop-filter: blur(1rem);
+}
+
+.modal {
+  background-color: hsla(0, 0%, 0%, 0.25);
+  border: 1px solid var(--clr-grey);
+  border-radius: 10px;
+  padding: 25px;
+  min-width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  > div:nth-child(1) {
+    padding: 2.5px;
+    > p:nth-child(1) {
+      font-weight: bold;
+      font-size: 1.25rem;
+      // text-align: center;
+    }
+  }
+  > div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 5px;
+  }
+}
