@@ -3,6 +3,7 @@ import css from './main.module.scss'
 import Bg from './bg/bg'
 
 import type { CarData } from '../details'
+import Appointment from './appointment/appointment'
 
 interface Props {
   carData: CarData
@@ -29,6 +30,7 @@ export default function Main(props: Props) {
           <p>{carData.brand}</p>
         </div>
       </div>
+      <Appointment />
     </main>
   )
 }
