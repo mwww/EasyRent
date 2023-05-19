@@ -1,0 +1,167 @@
+// import { useState,useEffect, ReactNode } from 'react'
+// import css from './appointments.module.scss'
+// import Confirmation from './modals/deleted/deletedAppointment'
+
+// interface appointmentData {
+//   id_appointment: number
+//   id_mobil:number
+//   user_name:string
+//   user_email:string
+//   user_phone:string
+//   pickup_date:ReactNode
+//   return_date:ReactNode
+// }
+
+
+// export default function Overview() {
+//   useEffect(() => {
+//     document.title = 'Appointments - EasyRent'
+//   }, [])
+
+//     const [appointtData, setAppointData] = useState<appointmentData[]>([])
+//     const [dataTable,setDataTable] = useState<appointmentData[]>([])
+//     const [sorting, setSorting] = useState<{
+//       column: string
+//       direction: 'asc' | 'desc'
+//     }>({ column: '', direction: 'asc' })
+//     const [searchQuery,setSearchQuery] = useState('')
+//     const [modal, setModal] = useState<React.ReactNode>(null) 
+
+//     const fetchAndSetData = () => {
+//       fetch(`http://localhost:3000/admin/appointments`)
+//         .then(async (response) => {
+//           const { data } = await response.json()
+//           setAppointData(data)
+//         })
+//         .catch((error) => {
+//           console.error('Error:', error)
+//         })
+//     }
+
+//     useEffect(() => {
+//       fetchAndSetData()
+//     },[])
+
+//     useEffect(() => {
+//       setDataTable(appointtData)
+//     },[appointtData])
+
+//     const handleSort = (column: string) => {
+//       setSorting((prevSorting) => ({
+//         column, 
+//         direction:
+//           prevSorting.column === column 
+//           ? prevSorting.direction === 'asc'
+//             ? 'desc'
+//             : 'asc'
+//           : 'asc',
+//       }))
+//       setSearchQuery('')
+//     }
+
+//     const filterData = searchQuery
+//     ? dataTable.filter((row) =>
+//         Object.values(row).some((value) =>
+//           value.toString().toLowerCase().includes(searchQuery.toLowerCase()),
+//           console.log(Object)
+//         )
+//       )
+//     : dataTable
+    
+//     const sortData = filterData.sort((a: any, b: any) => {
+//       const { column, direction} = sorting
+//       const aValue = a[column]
+//       const bValue = b[column]
+
+//       return direction === 'asc' ? aValue - bValue : bValue - aValue
+//     })
+
+//     const sortData = appointtData
+
+//     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//       setSearchQuery(e.target.value)
+//       console.log(searchQuery)
+//     }
+
+    
+//     const deleteCar = (id: number) => {
+//       const confirmationComponent = <Confirmation id={id} onClose={modalClose} />
+//       setModal(confirmationComponent)
+//     }
+    
+//     const modalClose = (isDeleted: boolean) => {
+//       setModal(null)
+//       if (isDeleted) {
+//         fetchAndSetData()
+//       }
+//     }
+    
+//   return (
+//     <>
+//     {/* ========== */}
+//     {/* modal here */}
+//     {modal}
+//     {/* ========== */}
+//     <div className={css.container}>
+//       <div>
+//         <div>
+//           <h3>Appointments</h3>
+//           <p > {sortData.length} Appointments found!</p>
+//         </div>
+//         <div>
+//           <p>menu (add Appointments, sorting)</p>
+//           <input
+//             type="text"
+//             value={searchQuery}
+//             onChange={handleSearchChange}
+//             placeholder="Search..."
+//           />
+//         </div>
+//       </div>
+//       <div className={css.table_container}>
+//         <table className={css.table}>
+//           <thead>
+//             <tr>
+//               <th onClick={() => handleSort("id_appointment")}>ID</th>
+//               <th onClick={() => handleSort("id_mobil")}>Id_Mobil</th>
+//               <th onClick={() => handleSort("user_name")}>Username</th>
+//               <th onClick={() => handleSort("user_email")}>Email</th>
+//               <th onClick={() => handleSort("user_phone")}>Phone</th>
+//               <th onClick={() => handleSort("pickup_date")}>Pick-Up Date</th>
+//               <th onClick={() => handleSort("return_date")}>Return Date</th>
+//               <th>Actions</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//           {
+//               sortData.map((row,index) => {
+//                 const {id_appointment, id_mobil, user_name,
+//                        user_email,user_phone, pickup_date, return_date } = row
+//                return (
+//                 <tr key={index}>
+//                   <td>{id_appointment}</td>
+//                   <td>{id_mobil}</td>
+//                   <td>{user_name}</td>
+//                   <td>{user_email}</td>
+//                   <td>{user_phone}</td>
+//                   <td>{pickup_date}</td>
+//                   <td>{return_date}</td>
+//                   <td>
+//                     <button>Edit</button>
+//                     <button  onClick={(e) => {
+//                           e.preventDefault()
+//                           deleteCar(row.id_mobil)
+//                         }}>Delete</button>
+//                   </td>
+
+//                 </tr>
+//                ) 
+//               })
+//             }
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   </>
+//   )
+// }
