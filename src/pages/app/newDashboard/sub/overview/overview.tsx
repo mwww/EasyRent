@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import css from './overview.module.scss'
+import css from './.module.scss'
 
 export default function Overview() {
   useEffect(() => {
