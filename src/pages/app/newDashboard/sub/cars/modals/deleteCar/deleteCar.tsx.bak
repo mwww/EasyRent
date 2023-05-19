@@ -1,0 +1,77 @@
+import { useRef, useEffect } from 'react'
+import css from './.module.scss'
+
+interface Props {
+  Id: number
+  OnClose: (_: boolean) => void
+}
+
+export default function DeleteCar(props: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (event.target === containerRef.current) {
+        close()
+      }
+    }
+
+    document.addEventListener('click', handleOutsideClick)
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }, [props.OnClose])
+
+  const close = (arg: boolean = false) => {
+    props.OnClose(arg)
+  }
+  const deleteCar = () => {
+    fetch(`http://localhost:3000/admin/car/${props.Id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Car deleted successfully')
+          // Perform any additional actions if needed
+          close(true)
+        } else {
+          console.error('Failed to delete car')
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+  }
+
+  return (
+    <div className={css.container} ref={containerRef}>
+      <div className={css.modal}>
+        <div>
+          <p>Are you sure?</p>
+          <p>
+            Are you sure want to delete a car with id {props.Id}? <br />
+            This action <span className={css.danger}>is not undo-able!</span>
+          </p>
+        </div>
+        <div>
+          <button
+            onClick={() => {
+              close()
+            }}
+          >
+            cancel
+          </button>
+          <button
+            className={css.danger}
+            onClick={() => {
+              deleteCar()
+            }}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
