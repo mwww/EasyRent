@@ -9,6 +9,7 @@ export default function NewDashboard() {
   }, [])
   return (
     <div className={css.container}>
+      <div></div>
       <aside>
         <div>
           <div className={css.logo_container}>

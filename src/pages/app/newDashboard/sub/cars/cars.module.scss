@@ -35,6 +35,11 @@
   width: 100%;
   padding: 0 50px;
   padding-bottom: 50px;
+
+  > p {
+    text-align: center;
+    font-weight: bold;
+  }
 }
 
 .table {
