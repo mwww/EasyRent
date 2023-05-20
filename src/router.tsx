@@ -37,13 +37,14 @@ export default function Router() {
         <Route path="/register" element={<Register />} />
 
         {/* management */}
-        <Route path="/admin" element={<Dashboard />} />
+        {/* <Route path="/admin" element={<Dashboard />} /> */}
+
         {/* new management */}
         <Route
-          path="/new/admin"
-          element={<Navigate to="/new/admin/overview" replace />}
+          path="/admin"
+          element={<Navigate to="/admin/overview" replace />}
         />
-        <Route path="/new/admin" element={<NewDashboard />}>
+        <Route path="/admin" element={<NewDashboard />}>
           <Route path="overview" element={<Overview />} />
           <Route path="cars" element={<Cars />} />
           <Route path="appointments" element={<Appointments />} />
