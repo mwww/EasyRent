@@ -45,7 +45,7 @@ select {
   padding: 10px 20px;
   border-radius: calc(1rem + 5px);
   border-radius: 10px;
-  border: 2px solid var(--clr-grey);
+  border: 1px solid var(--clr-grey);
 
   background-color: var(--clr-main-bg);
 }
@@ -71,6 +71,16 @@ button {
   color: transparent;
 }
 
+button.reg {
+  background: none;
+  background-clip: unset;
+  -webkit-background-clip: unset;
+  color: var(--clr-main);
+
+  border-radius: 10px;
+  border: 1px solid var(--clr-grey);
+}
+
 input,
 textarea {
   background-color: var(--clr-main-bg);
@@ -83,6 +93,17 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: 1px solid var(--clr-grey);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 .content_wrapper {
