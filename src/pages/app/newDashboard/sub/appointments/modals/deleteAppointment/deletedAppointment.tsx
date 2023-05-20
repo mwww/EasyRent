@@ -28,7 +28,7 @@ export default function DeleteCar(props: Props) {
   }
 
   const deleteCar = () => {
-    fetch(`http://localhost:3000/admin/appointments/${props.id}`, {
+    fetch(`http://localhost:3000/admin/appointment/${props.id}`, {
       method: 'DELETE',
     })
       .then((response) => {
