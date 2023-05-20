@@ -1,0 +1,284 @@
+import { useRef, useEffect, useState } from 'react'
+import css from './.module.scss'
+import axios from 'axios'
+
+interface Transmission {
+  transmission_type: string
+  speed: number
+}
+
+interface Image {
+  img_name: string
+  img_ext: string
+}
+
+interface Props {
+  onClose: (success: boolean) => void
+}
+
+export default function AddCar(props: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (event.target === containerRef.current) {
+        close()
+      }
+    }
+
+    document.addEventListener('click', handleOutsideClick)
+    return () => {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }, [])
+
+  const close = (success = false) => {
+    props.onClose(success)
+  }
+
+  const [formData, setFormData] = useState({
+    car: {
+      popularity_idx: 0,
+      model: '',
+      brand: '',
+      release_year: 0,
+      price: 0,
+      engine: '',
+      HP: 0,
+      TRQ: 0,
+    },
+    transmissions: [
+      {
+        transmission_type: '',
+        speed: 0,
+      },
+    ],
+    images: [
+      {
+        img_name: '',
+        img_ext: '',
+      },
+    ],
+  })
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index: number,
+    field: string,
+    subField?: string
+  ) => {
+    const { value } = e.target
+
+    if (subField) {
+      const subArray = [...formData[field]]
+      subArray[index][subField] = value
+      setFormData({ ...formData, [field]: subArray })
+    } else {
+      setFormData({
+        ...formData,
+        [field]: { ...formData[field], [index]: value },
+      })
+    }
+  }
+
+  const handleAddItem = (field: string) => {
+    const newItem = {
+      [field]: {
+        [`${field}_name`]: '',
+        [`${field}_ext`]: '',
+      },
+    }
+
+    setFormData((prevState) => ({
+      ...prevState,
+      [field]: [...prevState[field], newItem[field]],
+    }))
+  }
+
+  const handleRemoveItem = (field: string, index: number) => {
+    const newArray = [...formData[field]]
+    newArray.splice(index, 1)
+
+    setFormData({ ...formData, [field]: newArray })
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    axios
+      .post('http://localhost:3000/admin/car', formData)
+      .then((response) => {
+        // Handle successful response
+        console.log(response.data)
+      })
+      .catch((error) => {
+        // Handle error
+        console.error(error)
+      })
+  }
+
+  return (
+    <div className={css.container} ref={containerRef}>
+      <div className={css.modal}>
+        <p>dayum🙀</p>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Popularity Index:
+            <input
+              type="number"
+              name="popularity_idx"
+              value={formData.car.popularity_idx}
+              onChange={(e) => handleChange(e, 'car', 'popularity_idx')}
+            />
+          </label>
+          <br />
+          <label>
+            Model:
+            <input
+              type="text"
+              name="model"
+              value={formData.car.model}
+              onChange={(e) => handleChange(e, 'car', 'model')}
+            />
+          </label>
+          <br />
+          <label>
+            Brand:
+            <input
+              type="text"
+              name="brand"
+              value={formData.car.brand}
+              onChange={(e) => handleChange(e, 'car', 'brand')}
+            />
+          </label>
+          <br />
+          <label>
+            Release Year:
+            <input
+              type="number"
+              name="release_year"
+              value={formData.car.release_year}
+              onChange={(e) => handleChange(e, 'car', 'release_year')}
+            />
+          </label>
+          <br />
+          <label>
+            Price:
+            <input
+              type="number"
+              name="price"
+              value={formData.car.price}
+              onChange={(e) => handleChange(e, 'car', 'price')}
+            />
+          </label>
+          <br />
+          <label>
+            Engine:
+            <input
+              type="text"
+              name="engine"
+              value={formData.car.engine}
+              onChange={(e) => handleChange(e, 'car', 'engine')}
+            />
+          </label>
+          <br />
+          <label>
+            HP:
+            <input
+              type="number"
+              name="HP"
+              value={formData.car.HP}
+              onChange={(e) => handleChange(e, 'car', 'HP')}
+            />
+          </label>
+          <br />
+          <label>
+            TRQ:
+            <input
+              type="number"
+              name="TRQ"
+              value={formData.car.TRQ}
+              onChange={(e) => handleChange(e, 'car', 'TRQ')}
+            />
+          </label>
+          <br />
+          <hr />
+          {formData.transmissions.map((transmission, index) => (
+            <div key={index}>
+              <label>
+                Transmission Type:
+                <input
+                  type="text"
+                  name="transmission_type"
+                  value={transmission.transmission_type}
+                  onChange={(e) =>
+                    handleChange(e, index, 'transmissions', 'transmission_type')
+                  }
+                />
+              </label>
+              <br />
+              <label>
+                Speed:
+                <input
+                  type="number"
+                  name="speed"
+                  value={transmission.speed}
+                  onChange={(e) =>
+                    handleChange(e, index, 'transmissions', 'speed')
+                  }
+                />
+              </label>
+              <br />
+              <button
+                type="button"
+                onClick={() => handleRemoveItem('transmissions', index)}
+              >
+                Remove Transmission
+              </button>
+              <hr />
+            </div>
+          ))}
+          <button type="button" onClick={() => handleAddItem('transmissions')}>
+            Add Transmission
+          </button>
+          <hr />
+          {formData.images.map((image, index) => (
+            <div key={index}>
+              <label>
+                Image Name:
+                <input
+                  type="text"
+                  name="img_name"
+                  value={image.img_name}
+                  onChange={(e) => handleChange(e, index, 'images', 'img_name')}
+                />
+              </label>
+              <br />
+              <label>
+                Image Extension:
+                <input
+                  type="text"
+                  name="img_ext"
+                  value={image.img_ext}
+                  onChange={(e) => handleChange(e, index, 'images', 'img_ext')}
+                />
+              </label>
+              <br />
+              <button
+                type="button"
+                onClick={() => handleRemoveItem('images', index)}
+              >
+                Remove Image
+              </button>
+              <hr />
+            </div>
+          ))}
+          <button type="button" onClick={() => handleAddItem('images')}>
+            Add Image
+          </button>
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  )
+}

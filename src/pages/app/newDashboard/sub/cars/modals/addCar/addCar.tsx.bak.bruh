@@ -1,0 +1,194 @@
+import { useRef, useEffect, useState } from 'react'
+import css from './.module.scss'
+import axios from 'axios'
+
+interface Props {
+  onClose: (success: boolean) => void
+}
+
+interface Car {
+  popularity_idx?: number
+  model?: string
+  brand?: string
+  release_year?: number
+  price?: number
+  engine?: string
+  HP?: number
+  TRQ?: number
+}
+interface Transmission {
+  transmission_type?: string
+  speed?: number
+}
+interface Image {
+  img_name?: string
+  img_ext?: string
+}
+
+export default function AddCar(props: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (event.target === containerRef.current) {
+        close()
+      }
+    }
+
+    document.addEventListener('click', handleOutsideClick)
+    return () => {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }, [])
+  const close = (success = false) => {
+    props.onClose(success)
+  }
+
+  /*
+  // const [formData, setFormData] = useState({
+  //   car: {
+  //     popularity_idx: 0,
+  //     model: '',
+  //     brand: '',
+  //     release_year: 0,
+  //     price: 0,
+  //     engine: '',
+  //     HP: 0,
+  //     TRQ: 0,
+  //   },
+  //   transmissions: [
+  //     {
+  //       transmission_type: '',
+  //       speed: 0,
+  //     },
+  //   ],
+  //   images: [
+  //     {
+  //       img_name: '',
+  //       img_ext: '',
+  //     },
+  //   ],
+  // })
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value } = e.target
+  //   setFormData({ ...formData, [name]: value })
+  // }
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault()
+  //   axios
+  //     .post('http://localhost:3000/hi', formData)
+  //     .then((response) => {
+  //       // Handle successful response
+  //       console.log(response.data)
+  //     })
+  //     .catch((error) => {
+  //       // Handle error
+  //       console.error(error)
+  //     })
+  // }
+ */
+
+  // ===
+  // Handle car data form.
+  // ===
+  const [formCarData, setFormCarData] = useState<Car>({})
+
+  // const handleCarChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value } = e.target
+  //   console.log(value)
+  //   let updatedValue: string | number = value
+
+  //   if (
+  //     name === 'popularity_idx' ||
+  //     name === 'release_year' ||
+  //     name === 'price' ||
+  //     name === 'HP' ||
+  //     name === 'TRQ'
+  //   ) {
+  //     updatedValue = parseInt(value, 10)
+  //   }
+
+  //   console.log(formCarData)
+  //   setFormCarData({ [name]: updatedValue })
+  //   // setFormCarData((prevFormCarData) => {
+  //   //   return Object.assign({}, prevFormCarData, { [name]: updatedValue })
+  //   // })
+  //   console.log(formCarData)
+  // }
+
+  // const handleCarChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value } = e.target
+
+  //   setFormCarData((prevFormCarData) => ({
+  //     ...prevFormCarData,
+  //     [name]: value,
+  //   }))
+  // }
+
+  const handleCarChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    console.log(value)
+    setFormCarData({ ...formCarData, [name]: value })
+  }
+
+  // ===
+  // Handle all form.
+  // ===
+  const [formData, setFormData] = useState({})
+  useEffect(() => {}, [formCarData])
+
+  return (
+    <div className={css.container} ref={containerRef}>
+      <div className={css.modal}>
+        <p>dayum🙀</p>
+        {/* <form onSubmit={handleSubmit}> */}
+        <form>
+          <label>
+            Car:
+            <label>
+              popularity_idx:
+              <input
+                type="number"
+                name="popularity_idx"
+                value={formCarData.popularity_idx}
+                onChange={handleCarChange}
+                min={0}
+                max={10}
+                // inputMode="numeric"
+              />
+            </label>
+          </label>
+          {/* <br />
+          <label>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Message:
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+            />
+          </label> */}
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  )
+}

@@ -1,0 +1,113 @@
+import { useRef, useEffect, useState } from 'react'
+import css from './.module.scss'
+import axios from 'axios'
+
+interface Props {
+  onClose: (success: boolean) => void
+}
+
+export default function AddCar(props: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (event.target === containerRef.current) {
+        close()
+      }
+    }
+
+    document.addEventListener('click', handleOutsideClick)
+    return () => {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }, [])
+  const close = (success = false) => {
+    props.onClose(success)
+  }
+
+  const [formData, setFormData] = useState({
+    car: {
+      popularity_idx: 0,
+      model: '',
+      brand: '',
+      release_year: 0,
+      price: 0,
+      engine: '',
+      HP: 0,
+      TRQ: 0,
+    },
+    transmissions: [
+      {
+        transmission_type: '',
+        speed: 0,
+      },
+    ],
+    images: [
+      {
+        img_name: '',
+        img_ext: '',
+      },
+    ],
+  })
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    axios
+      .post('http://localhost:3000/hi', formData)
+      .then((response) => {
+        // Handle successful response
+        console.log(response.data)
+      })
+      .catch((error) => {
+        // Handle error
+        console.error(error)
+      })
+  }
+
+  return (
+    <div className={css.container} ref={containerRef}>
+      <div className={css.modal}>
+        <p>dayum🙀</p>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Message:
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  )
+}
