@@ -1,47 +1,46 @@
-
 import React, { useEffect, useState } from 'react'
 
 import css from './appointments.module.scss'
 
-import Confirmation from './modals/deleted/deletedAppointment'
+import Confirmation from './modals/deleteAppointment/deletedAppointment'
 
 interface AppointmentData {
   id_appointment: number
-  id_mobil:number
-  user_name:string
-  user_email:string
-  user_phone:string
-  pickup_date:string
-  return_date:string
+  id_mobil: number
+  user_name: string
+  user_email: string
+  user_phone: string
+  pickup_date: string
+  return_date: string
 }
 
 const dummyData: AppointmentData[] = [
   {
     id_appointment: 1,
-    id_mobil:2,
-    user_name:"Abdul",
-    user_email:"Abdul@gmail.com",
-    user_phone:"0812373427",
-    pickup_date:"20-03-2023 ",
-    return_date:"20-04-2023 "
+    id_mobil: 2,
+    user_name: 'Abdul',
+    user_email: 'Abdul@gmail.com',
+    user_phone: '0812373427',
+    pickup_date: '20-03-2023 ',
+    return_date: '20-04-2023 ',
   },
   {
     id_appointment: 2,
-    id_mobil:4,
-    user_name:"Mamat",
-    user_email:"mamatkece@gmail.com",
-    user_phone:"0812373427",
-    pickup_date:"20-10-2023 ",
-    return_date:"20-11-2023 "
+    id_mobil: 4,
+    user_name: 'Mamat',
+    user_email: 'mamatkece@gmail.com',
+    user_phone: '0812373427',
+    pickup_date: '20-10-2023 ',
+    return_date: '20-11-2023 ',
   },
   {
     id_appointment: 3,
-    id_mobil:6,
-    user_name:"Rizki",
-    user_email:"Rizki@gmail.com",
-    user_phone:"0812373427",
-    pickup_date:"20-01-2023 ",
-    return_date:"20-02-2023 "
+    id_mobil: 6,
+    user_name: 'Rizki',
+    user_email: 'Rizki@gmail.com',
+    user_phone: '0812373427',
+    pickup_date: '20-01-2023 ',
+    return_date: '20-02-2023 ',
   },
 ]
 
@@ -68,15 +67,15 @@ export default function Cars() {
   }, [carsData])
 
   const fetchAndSetData = () => {
-    // fetch(`http://localhost:3000/admin/cars`)
-    //   .then(async (response) => {
-    //     const { data } = await response.json()
-    //     setCarsData(data)
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error)
-    //   })
-    setCarsData(dummyData)
+    fetch(`http://localhost:3000/admin/appointment`)
+      .then(async (response) => {
+        const { data } = await response.json()
+        setCarsData(data)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+    // setCarsData(dummyData)
   }
 
   const handleSort = (column: string) => {
@@ -133,8 +132,8 @@ export default function Cars() {
       <div className={css.container}>
         <div>
           <div>
-            <h3>Cars</h3>
-            <p>{sortedData.length} cars found!</p>
+            <h3>Appointments</h3>
+            <p>{sortedData.length} appointments found!</p>
           </div>
           <div>
             <p>
@@ -163,14 +162,10 @@ export default function Cars() {
               <thead>
                 <tr>
                   <th onClick={() => handleSort('id_appointment')}>ID</th>
-                  <th onClick={() => handleSort('id_mobil')}>
-                    Id_mobil
-                  </th>
+                  <th onClick={() => handleSort('id_mobil')}>Id_mobil</th>
                   <th onClick={() => handleSort('user_name')}>username</th>
                   <th onClick={() => handleSort('user_email')}>email</th>
-                  <th onClick={() => handleSort('user_phone')}>
-                    phone
-                  </th>
+                  <th onClick={() => handleSort('user_phone')}>phone</th>
                   <th onClick={() => handleSort('pickup_date')}>pickup_date</th>
                   <th onClick={() => handleSort('return_date')}>return_date</th>
                   <th>Actions</th>
@@ -191,7 +186,7 @@ export default function Cars() {
                         href="/"
                         onClick={(e) => {
                           e.preventDefault()
-                          deleteCar(row.id_mobil)
+                          deleteCar(row.id_appointment)
                         }}
                       >
                         del
