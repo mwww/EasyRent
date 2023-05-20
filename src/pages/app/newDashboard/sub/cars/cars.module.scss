@@ -1,5 +1,5 @@
 .container {
-  overflow: scroll;
+  overflow: auto;
   height: 100%;
   position: relative;
 
@@ -39,12 +39,17 @@
   > p {
     text-align: center;
     font-weight: bold;
+    padding: 50px 0;
   }
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
+
+  .actions {
+    display: flex;
+  }
 
   th,
   td {
