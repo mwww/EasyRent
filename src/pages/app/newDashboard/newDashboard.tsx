@@ -5,7 +5,7 @@ import css from './newDashboard.module.scss'
 
 export default function NewDashboard() {
   useEffect(() => {
-    document.title = 'New Dashboard - EasyRent'
+    document.title = 'Dashboard - EasyRent'
   }, [])
   return (
     <div className={css.container}>
