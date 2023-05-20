@@ -16,7 +16,7 @@ const main = () => {
   // const [passwordError, setPasswordError] = useState('')
   const navigate = useNavigate();
   
-  const Register = async (e) =>{
+  const Register = async (e:any) =>{
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -25,7 +25,7 @@ const main = () => {
     }
 
     try {
-        await axios.post('http://localhost:3000/api/users', {
+        await axios.post('http://localhost:3000/user/users', {
             name: name,
             email: email, 
             password: password,
@@ -33,7 +33,7 @@ const main = () => {
         });
 
         navigate('/login')
-    } catch (error) {
+    } catch (error:any) {
         if(error.response) {
             setMsg(error.response.data.msg);
         }
@@ -42,7 +42,7 @@ const main = () => {
 
 }
 
-const validateEmail = (e) => {
+const validateEmail = (e:any) => {
   e.preventDefault();
   var email = e.target.value
 

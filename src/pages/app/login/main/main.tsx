@@ -2,21 +2,32 @@ import React, { useEffect, useState } from 'react'
 import css from './main.module.scss'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
 const main = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [msg, setMsg] = useState('')
-  const navigate = useNavigate()
+  const navigate =useNavigate()
+  const [cookies, setCookie] = useCookies(['token'])
+  
 
   const auth = async (e: any) => {
     e.preventDefault()
     try {
-      await axios.post('http://localhost:3000/api/login', {
+      await axios.post('http://localhost:3000/user/login', {
         email: email,
         password: password,
       })
-      navigate('/admin')
+      .then(response => {
+        const token = response.data.accessToken
+        setCookie('token', token)
+      })
+      if (e) {
+        navigate('/new/admin')
+      } else {
+        navigate('/login')
+      }
     } catch (error: any) {
       if (error.response) {
         setMsg(error.response.data.msg)

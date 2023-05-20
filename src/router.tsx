@@ -19,6 +19,7 @@ import Cars from './pages/app/newDashboard/sub/cars/cars'
 import Appointments from './pages/app/newDashboard/sub/appointments/appointments'
 
 import E404 from './pages/e404/e404'
+import ProtectedRoutes  from './pages/app/login/ProtectedRoutes';
 
 export default function Router() {
   return (
@@ -39,15 +40,22 @@ export default function Router() {
         {/* management */}
         <Route path="/admin" element={<Dashboard />} />
         {/* new management */}
-        <Route
+        {/* <Route
           path="/new/admin"
-          element={<Navigate to="/new/admin/overview" replace />}
-        />
-        <Route path="/new/admin" element={<NewDashboard />}>
-          <Route path="overview" element={<Overview />} />
-          <Route path="cars" element={<Cars />} />
-          <Route path="appointments" element={<Appointments />} />
-        </Route>
+          element={<Navigate to="/new/admin/overview" replace={true} />}
+        /> */}
+
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/new/admin" element={<NewDashboard />}> 
+              <Route path="overview" element={<Overview />} />
+              <Route path="cars" element={<Cars />} />
+              <Route path="appointments" element={<Appointments />} />
+            </Route>
+          </Route>
+
+
+        {/* <Route path="/new/admin" element={<NewDashboard />}>
+        </Route> */}
 
         <Route path="*" element={<E404 />} />
       </Routes>
