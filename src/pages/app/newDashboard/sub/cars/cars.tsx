@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import css from './cars.module.scss'
 
 import Confirmation from './modals/deleteCar/deleteCar'
+import AddCar from './modals/addCar/addCar'
+import AddAndEditCar from './modals/addAndEditCar/addAndEditCar'
 
 interface CarData {
   id_mobil: number
@@ -25,12 +27,10 @@ export default function Cars() {
   }>({ column: '', direction: 'asc' })
   const [searchQuery, setSearchQuery] = useState('')
   const [modal, setModal] = useState<React.ReactNode>(null)
+  const [reloadButtonValue, setReloadButtonValue] = useState<string>('Reload')
 
   useEffect(() => {
     document.title = 'Cars - EasyRent'
-  }, [])
-
-  useEffect(() => {
     fetchAndSetData()
   }, [])
 
@@ -39,12 +39,17 @@ export default function Cars() {
   }, [carsData])
 
   const fetchAndSetData = () => {
-    fetch(`http://localhost:3000/admin/cars`)
+    setReloadButtonValue('🔄Reloading...')
+    fetch(`http://localhost:3000/admin/car`)
       .then(async (response) => {
         const { data } = await response.json()
         setCarsData(data)
+        setTimeout(() => {
+          setReloadButtonValue('🔄Reload')
+        }, 1000)
       })
       .catch((error) => {
+        setReloadButtonValue('✖Failed Reloading')
         console.error('Error:', error)
       })
   }
@@ -83,8 +88,21 @@ export default function Cars() {
   })
 
   const deleteCar = (id: number) => {
-    const confirmationComponent = <Confirmation id={id} onClose={modalClose} />
-    setModal(confirmationComponent)
+    const confirmationModalComponent = (
+      <Confirmation id={id} onClose={modalClose} />
+    )
+    setModal(confirmationModalComponent)
+  }
+
+  const newCar = () => {
+    // const newCarModalComponent = <AddCar onClose={modalClose} />
+    const newCarModalComponent = <AddAndEditCar onClose={modalClose} />
+    setModal(newCarModalComponent)
+  }
+  const editCar = (id: number) => {
+    // const newCarModalComponent = <AddCar onClose={modalClose} />
+    const newCarModalComponent = <AddAndEditCar onClose={modalClose} id={id} />
+    setModal(newCarModalComponent)
   }
 
   const modalClose = (isDeleted: boolean) => {
@@ -108,7 +126,15 @@ export default function Cars() {
           </div>
           <div>
             <p>
-              menu (add car, sorting)
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault()
+                  newCar()
+                }}
+              >
+                ➕add
+              </a>{' '}
               <a
                 href=""
                 onClick={(e) => {
@@ -116,7 +142,7 @@ export default function Cars() {
                   fetchAndSetData()
                 }}
               >
-                Refresh
+                {reloadButtonValue}
               </a>
             </p>
             <input
@@ -134,13 +160,11 @@ export default function Cars() {
                 <tr>
                   <th onClick={() => handleSort('id_mobil')}>ID</th>
                   <th onClick={() => handleSort('popularity_idx')}>
-                    Popularity Index
+                    Popularity
                   </th>
                   <th onClick={() => handleSort('model')}>Model</th>
                   <th onClick={() => handleSort('brand')}>Brand</th>
-                  <th onClick={() => handleSort('release_year')}>
-                    Release Year
-                  </th>
+                  <th onClick={() => handleSort('release_year')}>Released</th>
                   <th onClick={() => handleSort('price')}>Price</th>
                   <th onClick={() => handleSort('engine')}>Engine</th>
                   <th onClick={() => handleSort('HP')}>HP</th>
@@ -161,16 +185,26 @@ export default function Cars() {
                     <td>{row.HP}</td>
                     <td>{row.TRQ}</td>
                     <td>
-                      <a
-                        href="/"
-                        onClick={(e) => {
-                          e.preventDefault()
-                          deleteCar(row.id_mobil)
-                        }}
-                      >
-                        del
-                      </a>
-                      , edit
+                      <div className={css.actions}>
+                        <a
+                          href="/"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            editCar(row.id_mobil)
+                          }}
+                        >
+                          ✏️edit
+                        </a>{' '}
+                        <a
+                          href="/"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            deleteCar(row.id_mobil)
+                          }}
+                        >
+                          ❌del
+                        </a>{' '}
+                      </div>
                     </td>
                   </tr>
                 ))}
