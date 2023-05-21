@@ -9,7 +9,7 @@ const main = () => {
   const [password, setPassword] = useState('')
   const [msg, setMsg] = useState('')
   const navigate =useNavigate()
-  const [cookies, setCookie] = useCookies(['token'])
+  const [cookies, setCookie] = useCookies(['token','refreshToken'])
   
 
   const auth = async (e: any) => {
@@ -20,8 +20,12 @@ const main = () => {
         password: password,
       })
       .then(response => {
-        const token = response.data.accessToken
-        setCookie('token', token)
+        const token = JSON.stringify(response.data.accessToken)
+        const refToken = JSON.stringify(response.data.refreshToken)
+
+        setCookie('refreshToken', refToken, { path: '/' })
+        setCookie('token', token, { path: '/' })
+
       })
       if (e) {
         navigate('/new/admin')

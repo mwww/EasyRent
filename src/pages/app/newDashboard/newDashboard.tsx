@@ -6,14 +6,18 @@ import css from './newDashboard.module.scss'
 import axios from 'axios'
 
 export default function NewDashboard() {
-  const [cookies, setCookie, removeCookie] = useCookies(['token'])
+  const [cookies, setCookie, removeCookie] = useCookies(['token','refreshToken'])
   const navigate = useNavigate()
+
+  const token = cookies.token
+  const refToken = cookies.refreshToken
 
   const logout = async () => {
     try {
       await axios.delete('http://localhost:3000/user/logout')
-      removeCookie('token')
-      navigate('/')
+        removeCookie('token')
+        removeCookie('refreshToken')
+        navigate('/')
     } catch (error) {
       console.log(error);
       
