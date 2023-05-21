@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import css from './appointments.module.scss'
 
-import Confirmation from './modals/deleteAppointment/deletedAppointment'
+import DeleteOrMadAppointment from './modals/deleteAppointments/deleteOrMadAppointment'
+import AddAndEditAppointment from './modals/addAndEditAppointments/addAndEditAppointment'
 
 interface AppointmentData {
   id_appointment: number
@@ -12,40 +13,12 @@ interface AppointmentData {
   user_phone: string
   pickup_date: string
   return_date: string
+  is_done: boolean
 }
 
-const dummyData: AppointmentData[] = [
-  {
-    id_appointment: 1,
-    id_mobil: 2,
-    user_name: 'Abdul',
-    user_email: 'Abdul@gmail.com',
-    user_phone: '0812373427',
-    pickup_date: '20-03-2023 ',
-    return_date: '20-04-2023 ',
-  },
-  {
-    id_appointment: 2,
-    id_mobil: 4,
-    user_name: 'Mamat',
-    user_email: 'mamatkece@gmail.com',
-    user_phone: '0812373427',
-    pickup_date: '20-10-2023 ',
-    return_date: '20-11-2023 ',
-  },
-  {
-    id_appointment: 3,
-    id_mobil: 6,
-    user_name: 'Rizki',
-    user_email: 'Rizki@gmail.com',
-    user_phone: '0812373427',
-    pickup_date: '20-01-2023 ',
-    return_date: '20-02-2023 ',
-  },
-]
+export default function Appointment() {
+  const [appointmentData, setAppointmentData] = useState<AppointmentData[]>([])
 
-export default function Cars() {
-  const [carsData, setCarsData] = useState<AppointmentData[]>([])
   const [tableData, setTableData] = useState<AppointmentData[]>([])
   const [sorting, setSorting] = useState<{
     column: string
@@ -53,29 +26,31 @@ export default function Cars() {
   }>({ column: '', direction: 'asc' })
   const [searchQuery, setSearchQuery] = useState('')
   const [modal, setModal] = useState<React.ReactNode>(null)
+  const [reloadButtonValue, setReloadButtonValue] = useState<string>('Reload')
 
   useEffect(() => {
-    document.title = 'Cars - EasyRent'
-  }, [])
-
-  useEffect(() => {
+    document.title = 'Appointment - EasyRent'
     fetchAndSetData()
   }, [])
 
   useEffect(() => {
-    setTableData(carsData)
-  }, [carsData])
+    setTableData(appointmentData)
+  }, [appointmentData])
 
   const fetchAndSetData = () => {
-    fetch(`http://localhost:3000/admin/appointment`)
+    setReloadButtonValue('🔄Reloading...')
+    fetch(`http://localhost:3000/admin/appointment/`)
       .then(async (response) => {
         const { data } = await response.json()
-        setCarsData(data)
+        setAppointmentData(data)
+        setTimeout(() => {
+          setReloadButtonValue('🔄Reload')
+        }, 1000)
       })
       .catch((error) => {
+        setReloadButtonValue('✖Failed Reloading')
         console.error('Error:', error)
       })
-    // setCarsData(dummyData)
   }
 
   const handleSort = (column: string) => {
@@ -111,9 +86,28 @@ export default function Cars() {
     return direction === 'asc' ? aValue - bValue : bValue - aValue
   })
 
-  const deleteCar = (id: number) => {
-    const confirmationComponent = <Confirmation id={id} onClose={modalClose} />
-    setModal(confirmationComponent)
+  const deleteAppointment = (id: number) => {
+    const confirmationModalComponent = (
+      <DeleteOrMadAppointment id={id} action="del" onClose={modalClose} />
+    )
+    setModal(confirmationModalComponent)
+  }
+  const madAppointment = (id: number) => {
+    const confirmationModalComponent = (
+      <DeleteOrMadAppointment id={id} action="mad" onClose={modalClose} />
+    )
+    setModal(confirmationModalComponent)
+  }
+
+  const newCar = () => {
+    const newCarModalComponent = <AddAndEditAppointment onClose={modalClose} />
+    setModal(newCarModalComponent)
+  }
+  const editCar = (id: number) => {
+    const newCarModalComponent = (
+      <AddAndEditAppointment onClose={modalClose} id={id} />
+    )
+    setModal(newCarModalComponent)
   }
 
   const modalClose = (isDeleted: boolean) => {
@@ -137,7 +131,15 @@ export default function Cars() {
           </div>
           <div>
             <p>
-              menu (add car, sorting)
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault()
+                  newCar()
+                }}
+              >
+                ➕add
+              </a>{' '}
               <a
                 href=""
                 onClick={(e) => {
@@ -145,7 +147,7 @@ export default function Cars() {
                   fetchAndSetData()
                 }}
               >
-                Refresh
+                {reloadButtonValue}
               </a>
             </p>
             <input
@@ -162,12 +164,13 @@ export default function Cars() {
               <thead>
                 <tr>
                   <th onClick={() => handleSort('id_appointment')}>ID</th>
-                  <th onClick={() => handleSort('id_mobil')}>Id_mobil</th>
-                  <th onClick={() => handleSort('user_name')}>username</th>
-                  <th onClick={() => handleSort('user_email')}>email</th>
-                  <th onClick={() => handleSort('user_phone')}>phone</th>
-                  <th onClick={() => handleSort('pickup_date')}>pickup_date</th>
-                  <th onClick={() => handleSort('return_date')}>return_date</th>
+                  <th onClick={() => handleSort('id_mobil')}>Car ID</th>
+                  <th onClick={() => handleSort('user_name')}>Name</th>
+                  <th onClick={() => handleSort('user_email')}>Email</th>
+                  <th onClick={() => handleSort('user_phone')}>Phone</th>
+                  <th onClick={() => handleSort('pickup_date')}>Pickup</th>
+                  <th onClick={() => handleSort('return_date')}>Return</th>
+                  <th onClick={() => handleSort('is_done')}>Done</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -181,17 +184,39 @@ export default function Cars() {
                     <td>{row.user_phone}</td>
                     <td>{row.pickup_date}</td>
                     <td>{row.return_date}</td>
+                    <td>{row.is_done ? '✓' : '✖'}</td>
                     <td>
-                      <a
-                        href="/"
-                        onClick={(e) => {
-                          e.preventDefault()
-                          deleteCar(row.id_appointment)
-                        }}
-                      >
-                        del
-                      </a>
-                      , edit
+                      <div className={css.actions}>
+                        <a
+                          href="/"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            madAppointment(row.id_appointment)
+                          }}
+                        >
+                          ✔️Mark as done
+                        </a>{' '}
+                        &nbsp;
+                        <a
+                          href="/"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            editCar(row.id_appointment)
+                          }}
+                        >
+                          ✏️edit
+                        </a>{' '}
+                        &nbsp;
+                        <a
+                          href="/"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            deleteAppointment(row.id_appointment)
+                          }}
+                        >
+                          ❌del
+                        </a>{' '}
+                      </div>
                     </td>
                   </tr>
                 ))}
