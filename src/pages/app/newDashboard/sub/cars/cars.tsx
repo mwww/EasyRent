@@ -29,6 +29,10 @@ export default function Cars() {
   const [modal, setModal] = useState<React.ReactNode>(null)
   const [reloadButtonValue, setReloadButtonValue] = useState<string>('Reload')
 
+  const toCurrency = (x: any) => {
+    return `Rp. ${x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
+  }
+
   useEffect(() => {
     document.title = 'Cars - EasyRent'
     fetchAndSetData()
@@ -180,7 +184,7 @@ export default function Cars() {
                     <td>{row.model}</td>
                     <td>{row.brand}</td>
                     <td>{row.release_year}</td>
-                    <td>{row.price}</td>
+                    <td>{toCurrency(row.price)}</td>
                     <td>{row.engine}</td>
                     <td>{row.HP}</td>
                     <td>{row.TRQ}</td>
