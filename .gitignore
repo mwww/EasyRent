@@ -1,5 +1,13 @@
 # MWWW
 .bak/
+*.bak/
+.bak/*
+*.bak/*
+
+.bak
+*.bak
+.bak*
+*.bak*
 
 # Logs
 logs
