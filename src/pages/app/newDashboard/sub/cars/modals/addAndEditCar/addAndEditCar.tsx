@@ -261,7 +261,7 @@ export default function AddAndEditCar(props: Props) {
       <div className={css.modal}>
         <form onSubmit={handleSubmit}>
           <div>
-            <h2>Add a new car</h2>
+            <h2>{props.id ? 'Edit existing' : 'Add a new'} car</h2>
             <a
               href=""
               onClick={(e) => {
